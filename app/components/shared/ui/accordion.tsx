@@ -14,7 +14,7 @@ function AccordionItem({ className, ...props }: React.ComponentProps<typeof Acco
             data-slot="accordion-item"
             data-value={props.value}
             className={cn(
-                'e-border-b e-border-l-0 e-border-r-0 e-border-t-0 e-border-solid e-border-[#282d2b] e-px-4 last:e-border-b-0',
+                'e-border-b e-border-l-0 e-border-r-0 e-border-t-0 e-border-solid e-border-[#362D65] e-px-4 last:e-border-b-0',
                 className
             )}
             {...props}

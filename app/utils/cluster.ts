@@ -39,9 +39,9 @@ export function clusterName(cluster: Cluster): string {
     }
 }
 
-export const MAINNET_BETA_URL = 'https://api.mainnet-beta.solana.com';
-export const TESTNET_URL = 'https://api.testnet.solana.com';
-export const DEVNET_URL = 'https://api.devnet.solana.com';
+export const MAINNET_BETA_URL = 'http://91.99.236.35:8899';
+export const TESTNET_URL = 'http://91.99.236.35:8899';
+export const DEVNET_URL = 'http://91.99.236.35:8899';
 
 const modifyUrl = (url: string): string => {
     if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {

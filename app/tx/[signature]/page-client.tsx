@@ -332,7 +332,7 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
 
                 {fee !== undefined && (
                     <tr>
-                        <td>Fee (SOL)</td>
+                        <td>Fee (ROX)</td>
                         <td className="text-lg-end">
                             <SolBalance lamports={fee} />
                         </td>
@@ -468,8 +468,8 @@ function AccountsCard({ signature }: SignatureProps) {
                         <tr>
                             <th className="text-muted">#</th>
                             <th className="text-muted">Address</th>
-                            <th className="text-muted">Change (SOL)</th>
-                            <th className="text-muted">Post Balance (SOL)</th>
+                            <th className="text-muted">Change (ROX)</th>
+                            <th className="text-muted">Post Balance (ROX)</th>
                             <th className="text-muted">Details</th>
                         </tr>
                     </thead>

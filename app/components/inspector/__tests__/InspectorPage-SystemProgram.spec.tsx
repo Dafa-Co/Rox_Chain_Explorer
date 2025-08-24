@@ -174,7 +174,7 @@ describe("TransactionInspectorPage with SystemProgram' instructions", () => {
                 [/Program/, /System Program/],
                 [/From Address/, /paykgcZ547qCd1sm3kBn83t9Fnr2hxM6anLBXhV7Fhn/],
                 [/New Address/, /recvKuUhe9nsQ4QzrW68rTnzFT2S2dGmBKFNRfQB4Lp/],
-                [/Transfer Amount \(SOL\)/, /0.001/],
+                [/Transfer Amount \(ROX\)/, /0.001/],
                 [/Allocated Data Size/, /100 byte\(s\)/],
                 [/Assigned Program Id/, /Associated Token Program/],
             ]);
@@ -215,7 +215,7 @@ describe("TransactionInspectorPage with SystemProgram' instructions", () => {
                 [/New Address/, /recvKuUhe9nsQ4QzrW68rTnzFT2S2dGmBKFNRfQB4Lp/],
                 [/Base Address/, /Base4feziQk7rNDM1GfCnU6BMAUQiY7MBtJ7qctugFJp/],
                 [/Seed/, /test-seed/],
-                [/Transfer Amount \(SOL\)/, /0.002/],
+                [/Transfer Amount \(ROX\)/, /0.002/],
                 [/Allocated Data Size/, /200 byte\(s\)/],
                 [/Assigned Program Id/, /Associated Token Program/],
             ]);
@@ -324,7 +324,7 @@ describe("TransactionInspectorPage with SystemProgram' instructions", () => {
                 [/Program/, /System Program/],
                 [/From Address/, /paykgcZ547qCd1sm3kBn83t9Fnr2hxM6anLBXhV7Fhn/],
                 [/To Address/, /destqL3WARuT1i7W4tyMr7e62fc5PjoQzuu2Cbpsf2p/],
-                [/Transfer Amount \(SOL\)/, /0.005/],
+                [/Transfer Amount \(ROX\)/, /0.005/],
             ]);
         });
     });
@@ -398,7 +398,7 @@ describe("TransactionInspectorPage with SystemProgram' instructions", () => {
                 [/Nonce Address/, /NonCboKHT9aKXzy87SQxX5ZWZ3u8VRVf5G6pm5NimtR/],
                 [/Authority Address/, /NautFCh9z5i4uN3ZCbEABf4ompPCPkzGzHKMcUbBUnf/],
                 [/To Address/, /destqL3WARuT1i7W4tyMr7e62fc5PjoQzuu2Cbpsf2p/],
-                [/Withdraw Amount \(SOL\)/, /0.001/],
+                [/Withdraw Amount \(ROX\)/, /0.001/],
             ]);
         });
     });
