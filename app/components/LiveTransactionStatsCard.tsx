@@ -160,10 +160,10 @@ function TpsBarChart({ performanceInfo, series, setSeries }: TpsBarChartProps) {
     const chartData: ChartData<'bar'> = {
         datasets: [
             {
-                backgroundColor: '#00D192',
+                backgroundColor: '#5C43D2',
                 borderWidth: 0,
                 data: seriesData.map(val => val || 0),
-                hoverBackgroundColor: '#00D192',
+                hoverBackgroundColor: '#5C43D2',
             },
         ],
         labels: seriesData.map((val, i) => {
@@ -216,8 +216,8 @@ function TpsBarChart({ performanceInfo, series, setSeries }: TpsBarChartProps) {
                             validators.app
                         </a>{' '}
                         or{' '}
-                        <a href="https://solscan.io" target="_blank" rel="noopener noreferrer">
-                            solscan.io
+                        <a href="https://roxscan.io" target="_blank" rel="noopener noreferrer">
+                            roxscan.io
                         </a>
                     </p>
                 </div>

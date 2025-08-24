@@ -13,7 +13,7 @@ describe('lamportsToSol', () => {
         expect(lamportsToSol(BigInt(-1))).toBe(-0.000000001);
     });
 
-    it('1 SOL', () => {
+    it('1 ROX', () => {
         expect(lamportsToSol(LAMPORTS_PER_SOL)).toBe(1.0);
         expect(lamportsToSol(BigInt(LAMPORTS_PER_SOL))).toBe(1.0);
         expect(lamportsToSol(-LAMPORTS_PER_SOL)).toBe(-1.0);

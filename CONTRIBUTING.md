@@ -1,6 +1,6 @@
 # Contributor's Guide
 
-Thank you for your interest in contributing to the Solana Explorer project! This guide will help you understand how to contribute effectively, including testing protocol integrations, ensuring CI/CD passes, and handling security-related features. 
+Thank you for your interest in contributing to the Rox Explorer project! This guide will help you understand how to contribute effectively, including testing protocol integrations, ensuring CI/CD passes, and handling security-related features. 
 
 ***Please do not submit one line PRs that upgrade CI workflows or dependencies unless they are related to bug fixes or performance improvements.*** If you have small changes you would like to see addressed, please file an issue instead. Thank you.
 
@@ -28,7 +28,7 @@ Contributing to the Explorer requires `pnpm` version `9.10.0`.
 Once you have this version of `pnpm`, you can continue with the following steps.
 
 -   Copy `.env.example` into `.env` & fill out the fields with custom RPC urls \
-    from a Solana RPC provider. You should not use `https://api.mainnet-beta.solana.com` \
+    from a Rox RPC provider. You should not use `https://api.mainnet-beta.solana.com` \
     or `https://api.devnet.solana.com` or else you will get rate-limited. These are public \
     endpoints not suitable for application development. You must set these URLs with \
     endpoints from your own provider.
@@ -166,7 +166,7 @@ pnpm test:ci
 
 ### Security Vulnerabilities
 
-For bugs relating to Solana Verify (aka Verified Builds), please send email to disclosures@solana.org.
+For bugs relating to Rox Verify (aka Verified Builds), please send email to disclosures@solana.org.
 
 For other security vulnerabilities, please do NOT report them publicly on GitHub Issues. Instead, use our dedicated bug bounty form at [https://example.com/bug-bounty](https://example.com/bug-bounty).
 

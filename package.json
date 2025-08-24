@@ -154,9 +154,13 @@
     "engines": {
         "node": "^18.20 || ^20.19"
     },
+    "overrides": {
+      "@solana/buffer-layout": "^4.0.1"
+    },
     "pnpm": {
         "overrides": {
-            "@solana/addresses": "2.1.0",
+          "@solana/buffer-layout": "^4.0.1",
+          "@solana/addresses": "2.1.0",
             "avsc": "git://github.com/Irys-xyz/avsc#a730cc8018b79e114b6a3381bbb57760a24c6cef",
             "cross-fetch": "^3.1.5",
             "node-fetch": "^2.6.9",

@@ -161,7 +161,7 @@ function ExtensionListItem({
             </div>
 
             {/* Description */}
-            <span className="e-text-[0.75rem] e-text-[#8E9090] e-underline e-decoration-[#1e2423] max-lg:e-hidden lg:e-col-span-6 lg:e-pl-12 xl:e-col-span-7">
+            <span className="e-text-[0.75rem] e-text-[#8E9090] e-underline e-decoration-[#161033] max-lg:e-hidden lg:e-col-span-6 lg:e-pl-12 xl:e-col-span-7">
                 {ext.description ?? null}
             </span>
 

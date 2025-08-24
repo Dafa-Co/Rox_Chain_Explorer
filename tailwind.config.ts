@@ -18,7 +18,7 @@ const config: Config = {
         extend: {
             boxShadow: {
                 // border for active states from Dashkit
-                active: '0 0 0 0.15rem #33a382',
+                active: '0 0 0 0.15rem #AA9AFA',
             },
             gridTemplateColumns: {
                 // Grid template for TokenExtensions

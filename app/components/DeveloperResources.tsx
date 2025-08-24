@@ -5,7 +5,7 @@ export function DeveloperResources() {
         <div className="card">
             <div className="card-body">
                 <div className="card-title d-flex justify-content-between border-bottom border-gray-300 pb-2">
-                    <div className="me-4">Kickstart your development journey on Solana</div>
+                    <div className="me-4">Kickstart your development journey on Rox</div>
                     <div>
                         Find more on{' '}
                         <a href="https://solana.com/developers" target="_blank" rel="noreferrer">
@@ -15,20 +15,20 @@ export function DeveloperResources() {
                 </div>
                 <div className="d-flex gap-4 pb-3 overflow-auto">
                     <ResourceCard
-                        title="Setup Your Solana Environment"
+                        title="Setup Your Rox Environment"
                         description="Get started in 5 minutes or less!"
                         image="https://solana.com/opengraph/developers/docs/intro/installation"
                         link="https://solana.com/docs/intro/installation"
                     />
                     <ResourceCard
                         title="Quick Start Guide"
-                        description="Hands-on guide to the core concepts for building on Solana"
+                        description="Hands-on guide to the core concepts for building on Rox"
                         image="https://solana.com/_next/image?url=%2Fassets%2Fdocs%2Fintro%2Fquickstart%2Fpg-not-connected.png&w=1920&q=75"
                         link="https://solana.com/docs/intro/quick-start"
                     />
                     <ResourceCard
-                        title="Solana Developer Bootcamp"
-                        description="11 hours of video lessons on Solana Development"
+                        title="Rox Developer Bootcamp"
+                        description="11 hours of video lessons on Rox Development"
                         image="https://i.ytimg.com/vi/amAq-WHAFs8/maxresdefault.jpg"
                         link="https://www.youtube.com/watch?v=amAq-WHAFs8"
                     />
