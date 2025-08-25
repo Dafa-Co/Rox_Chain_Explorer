@@ -41,7 +41,7 @@ export const ClusterStatusButton = () => {
 
         case ClusterStatus.Connecting:
             return (
-                <span className={btnClasses('warning')} onClick={onClickHandler}>
+                <span className={btnClasses('primary')} onClick={onClickHandler}>
                     <span className={spinnerClasses} role="status" aria-hidden="true"></span>
                     {statusName}
                 </span>

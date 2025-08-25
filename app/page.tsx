@@ -68,13 +68,18 @@ function StakingComponent() {
     }, [voteAccounts]);
 
     const activeStake = React.useMemo(() => {
-        if (voteAccounts && delinquentStake) {
+        if (voteAccounts && delinquentStake !== undefined && delinquentStake !== null) {
             return (
                 voteAccounts.current.reduce((prev, current) => prev + current.activatedStake, BigInt(0)) +
                 delinquentStake
             );
         }
+        return BigInt(0); // or null if you prefer no default
     }, [voteAccounts, delinquentStake]);
+
+    setTimeout(() => {
+        console.log('activeStake:', activeStake);
+    }, 700);
 
     if (supply === Status.Disconnected) {
         // we'll return here to prevent flicker
@@ -91,7 +96,12 @@ function StakingComponent() {
     const circulatingPercentage = percentage(supply.circulating, supply.total, 2).toFixed(1);
 
     let delinquentStakePercentage;
-    if (delinquentStake && activeStake) {
+    if (
+        delinquentStake !== undefined &&
+        delinquentStake !== null &&
+        activeStake !== undefined &&
+        activeStake !== null
+    ) {
         delinquentStakePercentage = percentage(delinquentStake, activeStake, 2).toFixed(1);
     }
 
@@ -115,12 +125,12 @@ function StakingComponent() {
                 <div className="card">
                     <div className="card-body">
                         <h4>Active Stake</h4>
-                        {activeStake ? (
+                        {activeStake !== null && activeStake !== undefined ? (
                             <h1>
                                 <em>{displayLamports(activeStake)}</em> / <small>{displayLamports(supply.total)}</small>
                             </h1>
                         ) : null}
-                        {delinquentStakePercentage && (
+                        {delinquentStakePercentage !== undefined && (
                             <h5>
                                 Delinquent stake: <em>{delinquentStakePercentage}%</em>
                             </h5>
