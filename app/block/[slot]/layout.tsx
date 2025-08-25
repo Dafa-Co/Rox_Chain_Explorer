@@ -203,7 +203,7 @@ function BlockLayoutInner({ children, params: { slot } }: Props) {
         );
     }
     return (
-        <div className="container mt-n3">
+        <div className="container">
             <div className="header">
                 <div className="header-body">
                     <h6 className="header-pretitle">Details</h6>

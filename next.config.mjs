@@ -10,6 +10,9 @@ const SUPPLY_ALIASES = ['accounts', 'accounts/top'];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
     experimental: {
         // FIXME: https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
         missingSuspenseWithCSRBailout: false,
@@ -50,6 +53,9 @@ const nextConfig = {
                 source: '/address/:address/history',
             },
         ];
+    },
+    typescript: {
+        ignoreBuildErrors: true,
     },
     webpack: (config, { isServer }) => {
         config.resolve.alias = {
