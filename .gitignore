@@ -40,3 +40,5 @@ next-env.d.ts
 # vim
 .editorconfig
 *storybook.log
+
+/.idea
