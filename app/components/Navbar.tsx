@@ -5,7 +5,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { useClusterPath } from '@utils/url';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSelectedLayoutSegment, useSelectedLayoutSegments } from 'next/navigation';
+// import { useSelectedLayoutSegment, useSelectedLayoutSegments } from 'next/navigation';
 import React, { ReactNode } from 'react';
 
 import { ClusterStatusButton } from './ClusterStatusButton';
@@ -15,12 +15,13 @@ export interface INavbarProps {
 }
 
 export function Navbar({ children }: INavbarProps) {
-    const [navOpened, navHandlers] = useDisclosure(false);
+    // const [navOpened, navHandlers] = useDisclosure(false);
+    const [_, navHandlers] = useDisclosure(false);
     const homePath = useClusterPath({ pathname: '/' });
-    const supplyPath = useClusterPath({ pathname: '/supply' });
-    const inspectorPath = useClusterPath({ pathname: '/tx/inspector' });
-    const selectedLayoutSegment = useSelectedLayoutSegment();
-    const selectedLayoutSegments = useSelectedLayoutSegments();
+    // const supplyPath = useClusterPath({ pathname: '/supply' });
+    // const inspectorPath = useClusterPath({ pathname: '/tx/inspector' });
+    // const selectedLayoutSegment = useSelectedLayoutSegment();
+    // const selectedLayoutSegments = useSelectedLayoutSegments();
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
             <div className="container px-4">
@@ -35,7 +36,7 @@ export function Navbar({ children }: INavbarProps) {
                 <div className="navbar-children d-flex align-items-center flex-grow-1 w-100 h-100 d-none d-lg-block">
                     {children}
                 </div>
-
+                {/* 
                 <div className={`collapse navbar-collapse ms-auto ${navOpened ? 'show' : ''} flex-shrink-0`}>
                     <ul className="navbar-nav me-auto">
                         <li className="nav-item">
@@ -59,7 +60,7 @@ export function Navbar({ children }: INavbarProps) {
                             </Link>
                         </li>
                     </ul>
-                </div>
+                </div> */}
 
                 <div className="d-none d-lg-block flex-shrink-0 ms-1">
                     <ClusterStatusButton />

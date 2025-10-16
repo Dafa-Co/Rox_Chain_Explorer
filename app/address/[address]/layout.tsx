@@ -393,16 +393,16 @@ export type MoreTabs =
     | 'token-extensions'
     | 'attestation';
 
-function MoreSection({ children, tabs }: { children: React.ReactNode; tabs: (JSX.Element | null)[] }) {
+function MoreSection({ children }: { children: React.ReactNode }) {
     return (
         <>
-            <div className="container">
+            {/* <div className="container">
                 <div className="header">
                     <div className="header-body pt-0">
                         <ul className="nav nav-tabs nav-overflow header-tabs">{tabs}</ul>
                     </div>
                 </div>
-            </div>
+            </div> */}
             {children}
         </>
     );

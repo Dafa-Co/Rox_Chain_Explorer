@@ -2,6 +2,7 @@ import ScaledUiAmountMultiplierTooltip from '@components/account/token-extension
 import { Address } from '@components/common/Address';
 import { Copyable } from '@components/common/Copyable';
 import { TableCardBody } from '@components/common/TableCardBody';
+import Logo from '@img/rox.svg';
 import { Account, NFTData, TokenProgramData, useFetchAccountInfo } from '@providers/accounts';
 import { TOKEN_2022_PROGRAM_ID, useScaledUiAmountForMint } from '@providers/accounts/tokens';
 import isMetaplexNFT from '@providers/accounts/utils/isMetaplexNFT';
@@ -41,6 +42,7 @@ import {
 } from '@validators/accounts/token-extension';
 import { BigNumber } from 'bignumber.js';
 import { capitalCase } from 'change-case';
+import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import { ExternalLink, RefreshCw } from 'react-feather';
 import { create } from 'superstruct';
@@ -436,12 +438,19 @@ function TokenAccountCard({ account, info }: { account: Account; info: TokenAcco
                     <tr>
                         <td>Rent-exempt reserve (ROX)</td>
                         <td className="text-lg-end">
-                            <>
-                                ◎
+                            <div className="flex !e-items-center !e-justify-center">
+                                <Image
+                                    alt="Rox Explorer"
+                                    width={12}
+                                    height={12}
+                                    src={Logo}
+                                    className="me-1"
+                                    style={{ marginBottom: 0.7 }}
+                                />
                                 <span className="font-monospace">
                                     {new BigNumber(info.rentExemptReserve.uiAmountString).toFormat(9)}
                                 </span>
-                            </>
+                            </div>
                         </td>
                     </tr>
                 )}
