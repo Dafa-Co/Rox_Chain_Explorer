@@ -11,7 +11,7 @@ import { SolBalance } from '@components/common/SolBalance';
 import { TableCardBody } from '@components/common/TableCardBody';
 import { SignatureContext } from '@components/instruction/SignatureContext';
 import { InstructionsSection } from '@components/transaction/InstructionsSection';
-import { ProgramLogSection } from '@components/transaction/ProgramLogSection';
+// import { ProgramLogSection } from '@components/transaction/ProgramLogSection';
 import { TokenBalancesCard } from '@components/transaction/TokenBalancesCard';
 import { FetchStatus } from '@providers/cache';
 import { useCluster } from '@providers/cluster';
@@ -22,12 +22,13 @@ import {
     useTransactionStatus,
 } from '@providers/transactions';
 import { useFetchTransactionDetails } from '@providers/transactions/parsed';
-import { ParsedTransaction, SystemInstruction, SystemProgram, TransactionSignature } from '@solana/web3.js';
+// import { ParsedTransaction, SystemInstruction, SystemProgram, TransactionSignature } from '@solana/web3.js';
+import { ParsedTransaction, TransactionSignature } from '@solana/web3.js';
 import { Cluster, ClusterStatus } from '@utils/cluster';
 import { displayTimestamp } from '@utils/date';
 import { SignatureProps } from '@utils/index';
 import { getTransactionInstructionError } from '@utils/program-err';
-import { intoTransactionInstruction } from '@utils/tx';
+// import { intoTransactionInstruction } from '@utils/tx';
 import { useClusterPath } from '@utils/url';
 import useTabVisibility from '@utils/use-tab-visibility';
 import { BigNumber } from 'bignumber.js';
@@ -35,9 +36,6 @@ import bs58 from 'bs58';
 import Link from 'next/link';
 import React, { Suspense, useEffect, useState } from 'react';
 import { RefreshCw, Settings } from 'react-feather';
-
-import { estimateRequestedComputeUnitsForParsedTransaction } from '@/app/utils/compute-units-schedule';
-import { getEpochForSlot } from '@/app/utils/epoch-schedule';
 
 const AUTO_REFRESH_INTERVAL = 2000;
 const ZERO_CONFIRMATION_BAILOUT = 5;
@@ -189,27 +187,21 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
 
     const transactionWithMeta = details?.data?.transactionWithMeta;
     const fee = transactionWithMeta?.meta?.fee;
-    const computeUnitsConsumed = transactionWithMeta?.meta?.computeUnitsConsumed;
     const costUnits = transactionWithMeta?.meta?.costUnits;
     const transaction = transactionWithMeta?.transaction;
     const blockhash = transaction?.message.recentBlockhash;
-    const epoch = clusterInfo ? getEpochForSlot(clusterInfo.epochSchedule, BigInt(info.slot)) : undefined;
-    const reservedCUs = transactionWithMeta?.transaction
-        ? estimateRequestedComputeUnitsForParsedTransaction(transactionWithMeta.transaction, epoch, cluster)
-        : undefined;
-    const version = transactionWithMeta?.version;
-    const isNonce = (() => {
-        if (!transaction || transaction.message.instructions.length < 1) {
-            return false;
-        }
+    // const isNonce = (() => {
+    //     if (!transaction || transaction.message.instructions.length < 1) {
+    //         return false;
+    //     }
 
-        const ix = intoTransactionInstruction(transaction, transaction.message.instructions[0]);
-        return (
-            ix &&
-            SystemProgram.programId.equals(ix.programId) &&
-            SystemInstruction.decodeInstructionType(ix) === 'AdvanceNonceAccount'
-        );
-    })();
+    //     const ix = intoTransactionInstruction(transaction, transaction.message.instructions[0]);
+    //     return (
+    //         ix &&
+    //         SystemProgram.programId.equals(ix.programId) &&
+    //         SystemInstruction.decodeInstructionType(ix) === 'AdvanceNonceAccount'
+    //     );
+    // })();
 
     let statusClass = 'success';
     let statusText = 'Success';
@@ -286,6 +278,30 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
                 )}
 
                 <tr>
+                    <td>Transfer Amount (ROX)</td>
+                    <td className="text-lg-end">
+                        <SolBalance
+                            lamports={
+                                (
+                                    details?.data?.transactionWithMeta?.transaction?.message?.instructions?.find(
+                                        ix => ix.programId.toString() === '11111111111111111111111111111111'
+                                    ) as any
+                                )?.parsed?.info?.lamports ?? 0
+                            }
+                        />
+                    </td>
+                </tr>
+
+                {fee !== undefined && (
+                    <tr>
+                        <td>Fee (ROX)</td>
+                        <td className="text-lg-end">
+                            <SolBalance lamports={fee} />
+                        </td>
+                    </tr>
+                )}
+
+                <tr>
                     <td>Timestamp</td>
                     <td className="text-lg-end">
                         {info.timestamp !== 'unavailable' ? (
@@ -298,15 +314,15 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
                     </td>
                 </tr>
 
-                <tr>
+                {/* <tr>
                     <td>Confirmation Status</td>
                     <td className="text-lg-end text-uppercase">{info.confirmationStatus || 'Unknown'}</td>
-                </tr>
+                </tr> */}
 
-                <tr>
+                {/* <tr>
                     <td>Confirmations</td>
                     <td className="text-lg-end text-uppercase">{info.confirmations}</td>
-                </tr>
+                </tr> */}
 
                 <tr>
                     <td>Slot</td>
@@ -318,31 +334,16 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
                 {blockhash && (
                     <tr>
                         <td>
-                            {isNonce ? (
+                            Recent Blockhash
+                            {/* {isNonce ? (
                                 'Nonce'
                             ) : (
                                 <InfoTooltip text="Transactions use a previously confirmed blockhash as a nonce to prevent double spends">
                                     Recent Blockhash
                                 </InfoTooltip>
-                            )}
+                            )} */}
                         </td>
                         <td className="text-lg-end">{blockhash}</td>
-                    </tr>
-                )}
-
-                {fee !== undefined && (
-                    <tr>
-                        <td>Fee (ROX)</td>
-                        <td className="text-lg-end">
-                            <SolBalance lamports={fee} />
-                        </td>
-                    </tr>
-                )}
-
-                {computeUnitsConsumed !== undefined && (
-                    <tr>
-                        <td>Compute units consumed</td>
-                        <td className="text-lg-end">{computeUnitsConsumed.toLocaleString('en-US')}</td>
                     </tr>
                 )}
 
@@ -350,20 +351,6 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
                     <tr>
                         <td>Transaction cost</td>
                         <td className="text-lg-end">{costUnits.toLocaleString('en-US')}</td>
-                    </tr>
-                )}
-
-                {reservedCUs !== undefined && (
-                    <tr>
-                        <td>Reserved CUs</td>
-                        <td className="text-lg-end">{reservedCUs.toLocaleString('en-US')}</td>
-                    </tr>
-                )}
-
-                {version !== undefined && (
-                    <tr>
-                        <td>Transaction Version</td>
-                        <td className="text-lg-end text-uppercase">{version}</td>
                     </tr>
                 )}
             </TableCardBody>
@@ -403,7 +390,7 @@ function DetailsSection({ signature }: SignatureProps) {
             <AccountsCard signature={signature} />
             <TokenBalancesCard signature={signature} />
             <InstructionsSection signature={signature} />
-            <ProgramLogSection signature={signature} />
+            {/* <ProgramLogSection signature={signature} /> */}
         </>
     );
 }
@@ -423,7 +410,7 @@ function AccountsCard({ signature }: SignatureProps) {
         return <ErrorCard text="Transaction metadata is missing" />;
     }
 
-    const accountRows = message.accountKeys.map((account, index) => {
+    const accountRows = message.accountKeys.slice(0, 2).map((account, index) => {
         const pre = meta.preBalances[index];
         const post = meta.postBalances[index];
         const pubkey = account.pubkey;
@@ -460,7 +447,7 @@ function AccountsCard({ signature }: SignatureProps) {
     return (
         <div className="card">
             <div className="card-header">
-                <h3 className="card-header-title">Account Input(s)</h3>
+                <h3 className="card-header-title">Breakdown</h3>
             </div>
             <div className="table-responsive mb-0">
                 <table className="table table-sm table-nowrap card-table">

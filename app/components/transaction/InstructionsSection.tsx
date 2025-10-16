@@ -103,15 +103,15 @@ export function InstructionsSection({ signature }: SignatureProps) {
 
     return (
         <>
-            <div className="container">
-                <div className="header">
-                    <div className="header-body">
-                        <h3 className="mb-0">
-                            {transaction.message.instructions.length > 1 ? 'Instructions' : 'Instruction'}
-                        </h3>
-                    </div>
+            {/* <div className="container"> */}
+            <div className="header">
+                <div className="header-body">
+                    <h3 className="mb-0">
+                        {transaction.message.instructions.length > 1 ? 'Instructions' : 'Instruction'}
+                    </h3>
                 </div>
             </div>
+            {/* </div> */}
             <React.Suspense fallback={<LoadingCard message="Loading Instructions" />}>
                 {transaction.message.instructions.map((instruction, index) => {
                     const innerCards: JSX.Element[] = [];

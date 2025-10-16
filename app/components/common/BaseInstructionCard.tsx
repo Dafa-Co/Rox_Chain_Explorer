@@ -49,8 +49,8 @@ export function BaseInstructionCard({
         getInstructionCardScrollAnchorId(childIndex != null ? [index + 1, childIndex + 1] : [index + 1])
     );
     return (
-        <div className="card" ref={scrollAnchorRef}>
-            <div className="card-header">
+        <div className="e-mb-6" ref={scrollAnchorRef}>
+            <div className="card-header !e-px-0">
                 <h3 className="card-header-title mb-0 d-flex align-items-center">
                     <span className={`badge bg-${resultClass}-soft me-2`}>
                         #{index + 1}
