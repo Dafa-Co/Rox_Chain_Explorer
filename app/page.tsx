@@ -37,8 +37,12 @@ export default function Page() {
                             <StatsCardBody />
                         </div>
                         <div className="col-md-6 d-flex">
-                            <LiveTransactionStatsCard />
+                            <StatsCardBody2 />
                         </div>
+                    </div>
+
+                    <div className="row d-flex">
+                        <LiveTransactionStatsCard />
                     </div>
                 </div>
             </SupplyProvider>
@@ -165,69 +169,161 @@ function StatsCardBody() {
         return <StatsNotReady error={error} />;
     }
 
-    const { avgSlotTime_1h, avgSlotTime_1min, epochInfo, blockTime } = dashboardInfo;
+    const { avgSlotTime_1h, epochInfo } = dashboardInfo;
     const hourlySlotTime = Math.round(1000 * avgSlotTime_1h);
-    const averageSlotTime = Math.round(1000 * avgSlotTime_1min);
     const { slotIndex, slotsInEpoch } = epochInfo;
     const epochProgress = percentage(slotIndex, slotsInEpoch, 2).toFixed(1) + '%';
     const epochTimeRemaining = slotsToHumanString(Number(slotsInEpoch - slotIndex), hourlySlotTime);
+
+    return (
+        <>
+            {/* second */}
+
+            <div className="card flex-grow-1">
+                <div className="card-header">
+                    <div className="row align-items-center">
+                        <div className="col">
+                            <h4 style={{ fontSize: '18px', fontWeight: '700' }} className="card-header-title">
+                                Live Cluster Stats
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <TableCardBody>
+                    {/* <tr>
+                        <td className="w-100 card-header-slot">Slot</td>
+                        <td className="text-lg-end card-header-title font-monospace">
+                            <Slot slot={absoluteSlot} link />
+                        </td>
+                    </tr> */}
+                    {/* {blockHeight !== undefined && (
+                        <tr>
+                            <td className="w-100 card-header-slot">Block height</td>
+                            <td className="text-lg-end card-header-title font-monospace">
+                                <Slot slot={blockHeight} />
+                            </td>
+                        </tr>
+                    )} */}
+                    {/* {blockTime && (
+                        <tr>
+                            <td className="w-100 card-header-slot">Cluster time</td>
+                            <td className="text-lg-end card-header-title font-monospace">
+                                <TimestampToggle unixTimestamp={blockTime} shorter></TimestampToggle>
+                            </td>
+                        </tr>
+                    )} */}
+                    {/* <tr>
+                        <td className="w-100 card-header-slot">Slot time (1min average)</td>
+                        <td className="text-lg-end card-header-title font-monospace">{averageSlotTime}ms</td>
+                    </tr> */}
+                    <tr>
+                        <td className="w-100 card-header-slot">Slot time (1hr average)</td>
+                        <td className="text-lg-end card-header-title font-monospace">{hourlySlotTime}ms</td>
+                    </tr>
+                    <tr>
+                        <td className="w-100 card-header-slot">Epoch</td>
+                        <td className="text-lg-end card-header-title font-monospace">
+                            <Epoch epoch={epochInfo.epoch} link />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="w-100 card-header-slot">Epoch progress</td>
+                        <td className="text-lg-end card-header-title font-monospace">{epochProgress}</td>
+                    </tr>
+                    <tr>
+                        <td className="w-100 card-header-slot">Epoch time remaining (approx.)</td>
+                        <td className="text-lg-end card-header-title font-monospace">~{epochTimeRemaining}</td>
+                    </tr>
+                </TableCardBody>
+            </div>
+        </>
+    );
+}
+
+function StatsCardBody2() {
+    const dashboardInfo = useDashboardInfo();
+    const performanceInfo = usePerformanceInfo();
+    const { setActive } = useStatsProvider();
+    const { cluster } = useCluster();
+
+    React.useEffect(() => {
+        setActive(true);
+        return () => setActive(false);
+    }, [setActive, cluster]);
+
+    if (performanceInfo.status !== ClusterStatsStatus.Ready || dashboardInfo.status !== ClusterStatsStatus.Ready) {
+        const error =
+            performanceInfo.status === ClusterStatsStatus.Error || dashboardInfo.status === ClusterStatsStatus.Error;
+        return <StatsNotReady error={error} />;
+    }
+
+    const { avgSlotTime_1min, epochInfo, blockTime } = dashboardInfo;
+
+    const averageSlotTime = Math.round(1000 * avgSlotTime_1min);
+
     const { blockHeight, absoluteSlot } = epochInfo;
 
     return (
-        <div className="card flex-grow-1">
-            <div className="card-header">
-                <div className="row align-items-center">
-                    <div className="col">
-                        <h4 className="card-header-title">Live Cluster Stats</h4>
+        <>
+            {/* first */}
+
+            <div className="card flex-grow-1">
+                <div className="card-header">
+                    <div className="row align-items-center">
+                        <div className="col">
+                            <h4 style={{ fontSize: '18px', fontWeight: '700' }} className="card-header-title">
+                                Live Cluster Stats
+                            </h4>
+                        </div>
                     </div>
                 </div>
+                <TableCardBody>
+                    <tr>
+                        <td className="w-100 card-header-slot">Slot</td>
+                        <td className="text-lg-end card-header-title font-monospace">
+                            <Slot slot={absoluteSlot} link />
+                        </td>
+                    </tr>
+                    {blockHeight !== undefined && (
+                        <tr>
+                            <td className="w-100 card-header-slot">Block height</td>
+                            <td className="text-lg-end card-header-title font-monospace">
+                                <Slot slot={blockHeight} />
+                            </td>
+                        </tr>
+                    )}
+                    {blockTime && (
+                        <tr>
+                            <td className="w-100 card-header-slot">Cluster time</td>
+                            <td className="text-lg-end card-header-title font-monospace">
+                                <TimestampToggle unixTimestamp={blockTime} shorter></TimestampToggle>
+                            </td>
+                        </tr>
+                    )}
+                    <tr>
+                        <td className="w-100 card-header-slot">Slot time (1min average)</td>
+                        <td className="text-lg-end card-header-title font-monospace">{averageSlotTime}ms</td>
+                    </tr>
+                    {/* <tr>
+                        <td className="w-100 card-header-slot">Slot time (1hr average)</td>
+                        <td className="text-lg-end card-header-title font-monospace">{hourlySlotTime}ms</td>
+                    </tr> */}
+                    {/* <tr>
+                        <td className="w-100 card-header-slot">Epoch</td>
+                        <td className="text-lg-end card-header-title font-monospace">
+                            <Epoch epoch={epochInfo.epoch} link />
+                        </td>
+                    </tr> */}
+                    {/* <tr>
+                        <td className="w-100 card-header-slot">Epoch progress</td>
+                        <td className="text-lg-end card-header-title font-monospace">{epochProgress}</td>
+                    </tr> */}
+                    {/* <tr>
+                        <td className="w-100 card-header-slot">Epoch time remaining (approx.)</td>
+                        <td className="text-lg-end card-header-title font-monospace">~{epochTimeRemaining}</td>
+                    </tr> */}
+                </TableCardBody>
             </div>
-            <TableCardBody>
-                <tr>
-                    <td className="w-100">Slot</td>
-                    <td className="text-lg-end font-monospace">
-                        <Slot slot={absoluteSlot} link />
-                    </td>
-                </tr>
-                {blockHeight !== undefined && (
-                    <tr>
-                        <td className="w-100">Block height</td>
-                        <td className="text-lg-end font-monospace">
-                            <Slot slot={blockHeight} />
-                        </td>
-                    </tr>
-                )}
-                {blockTime && (
-                    <tr>
-                        <td className="w-100">Cluster time</td>
-                        <td className="text-lg-end font-monospace">
-                            <TimestampToggle unixTimestamp={blockTime} shorter></TimestampToggle>
-                        </td>
-                    </tr>
-                )}
-                <tr>
-                    <td className="w-100">Slot time (1min average)</td>
-                    <td className="text-lg-end font-monospace">{averageSlotTime}ms</td>
-                </tr>
-                <tr>
-                    <td className="w-100">Slot time (1hr average)</td>
-                    <td className="text-lg-end font-monospace">{hourlySlotTime}ms</td>
-                </tr>
-                <tr>
-                    <td className="w-100">Epoch</td>
-                    <td className="text-lg-end font-monospace">
-                        <Epoch epoch={epochInfo.epoch} link />
-                    </td>
-                </tr>
-                <tr>
-                    <td className="w-100">Epoch progress</td>
-                    <td className="text-lg-end font-monospace">{epochProgress}</td>
-                </tr>
-                <tr>
-                    <td className="w-100">Epoch time remaining (approx.)</td>
-                    <td className="text-lg-end font-monospace">~{epochTimeRemaining}</td>
-                </tr>
-            </TableCardBody>
-        </div>
+        </>
     );
 }

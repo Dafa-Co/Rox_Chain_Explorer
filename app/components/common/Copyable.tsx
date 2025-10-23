@@ -28,7 +28,7 @@ export function Copyable({
 
     function CopyIcon() {
         if (state === 'copy') {
-            return <Copy className="align-text-top c-pointer" onClick={handleClick} size={13} />;
+            return <Copy color="#4723F5" className="align-text-top c-pointer" onClick={handleClick} size={13} />;
         } else if (state === 'copied') {
             return <CheckCircle className="align-text-top" size={13} />;
         } else if (state === 'errored') {

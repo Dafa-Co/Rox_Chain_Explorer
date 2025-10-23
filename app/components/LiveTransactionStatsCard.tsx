@@ -35,7 +35,9 @@ export function LiveTransactionStatsCard() {
     return (
         <div className="card flex-grow-1 d-flex flex-column">
             <div className="card-header">
-                <h4 className="card-header-title">Live Transaction Stats</h4>
+                <h4 style={{ fontSize: '18px', fontWeight: '700' }} className="card-header-title">
+                    Live Transaction Stats
+                </h4>
             </div>
             <TpsCardBody series={series} setSeries={setSeries} />
         </div>
@@ -175,12 +177,12 @@ function TpsBarChart({ performanceInfo, series, setSeries }: TpsBarChartProps) {
         <div className="d-flex flex-column flex-grow-1">
             <TableCardBody>
                 <tr>
-                    <td className="w-100">Transaction count</td>
-                    <td className="text-lg-end font-monospace">{transactionCount} </td>
+                    <td className="w-100 card-header-slot">Transaction count</td>
+                    <td className="text-lg-end card-header-title font-monospace">{transactionCount} </td>
                 </tr>
                 <tr>
-                    <td className="w-100">Transactions per second (TPS)</td>
-                    <td className="text-lg-end font-monospace">{averageTps} </td>
+                    <td className="w-100 card-header-slot">Transactions per second (TPS)</td>
+                    <td className="text-lg-end card-header-title font-monospace">{averageTps} </td>
                 </tr>
             </TableCardBody>
 
@@ -188,7 +190,7 @@ function TpsBarChart({ performanceInfo, series, setSeries }: TpsBarChartProps) {
 
             <div className="card-body py-3 d-flex flex-column flex-grow-1">
                 <div className="d-flex justify-content-between w-100">
-                    <span className="mb-0 font-size-sm">TPS history</span>
+                    <span className="mb-0 font-size-sm card-header-slot">TPS history</span>
 
                     <div className="font-size-sm">
                         {SERIES.map(key => (
