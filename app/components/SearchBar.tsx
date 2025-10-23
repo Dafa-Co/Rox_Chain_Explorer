@@ -146,10 +146,31 @@ export function SearchBar() {
                 blurInputOnSelect
                 onChange={onChange}
                 styles={{
-                    control: style => ({ ...style, pointerEvents: 'all' }),
-                    input: style => ({ ...style, width: '100%' }),
+                    control: style => ({
+                        ...style,
+                        pointerEvents: 'all',
+                        borderRadius: '8px !important',
+                        border: '1px solid #5746AC !important',
+                        backgroundColor: '#33266F !important',
+                        boxShadow: 'none !important',
+                        '&:hover': {
+                            border: '1px solid #5746AC !important',
+                        },
+                        '&:focus': {
+                            border: '1px solid #5746AC !important',
+                            boxShadow: 'none !important',
+                        },
+                    }),
+                    input: style => ({ ...style, width: '100%', boxShadow: 'none !important' }),
                     /* work around for https://github.com/JedWatson/react-select/issues/3857 */
-                    placeholder: style => ({ ...style, pointerEvents: 'none' }),
+                    placeholder: style => ({
+                        ...style,
+                        pointerEvents: 'none',
+                        color: 'rgba(120, 118, 161, 1) !important',
+                        fontSize: '12px !important',
+                        fontWeight: '300 !important',
+                        lineHeight: '16px !important',
+                    }),
                 }}
                 onInputChange={onInputChange}
                 components={{ Control, DropdownIndicator: undefined, IndicatorSeparator: undefined }}

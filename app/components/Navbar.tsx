@@ -117,7 +117,7 @@ export function Navbar({ children }: INavbarProps) {
                 <div>
                     <p className="text-white px-4">Explorer RoxChain</p>
 
-                    <div className="navbar-children d-flex align-items-center flex-grow-1 w-50 h-100 d-none d-lg-block">
+                    <div className="navbar-children d-flex align-items-center flex-grow-1 w-75 h-100 d-none d-lg-block">
                         {children}
                     </div>
                 </div>

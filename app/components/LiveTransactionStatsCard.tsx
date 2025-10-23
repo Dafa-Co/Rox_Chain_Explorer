@@ -190,7 +190,7 @@ function TpsBarChart({ performanceInfo, series, setSeries }: TpsBarChartProps) {
 
             <div className="card-body py-3 d-flex flex-column flex-grow-1">
                 <div className="d-flex justify-content-between w-100">
-                    <span className="mb-0 font-size-sm card-header-slot">TPS history</span>
+                    <span className="mb-0 font-size-sm card-header-title">TPS history</span>
 
                     <div className="font-size-sm">
                         {SERIES.map(key => (
