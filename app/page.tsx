@@ -34,10 +34,10 @@ export default function Page() {
 
                     <div className="row d-flex">
                         <div className="col-md-6 d-flex">
-                            <StatsCardBody />
+                            <StatsCardBody2 />
                         </div>
                         <div className="col-md-6 d-flex">
-                            <StatsCardBody2 />
+                            <StatsCardBody />
                         </div>
                     </div>
 

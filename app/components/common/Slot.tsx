@@ -11,7 +11,7 @@ type Props = {
 export function Slot({ slot, link }: Props) {
     const slotPath = useClusterPath({ pathname: `/block/${slot}` });
     return (
-        <span className="font-monospace">
+        <span style={{ fontSize: '20px', fontWeight: '400' }} className="font-monospace">
             {link ? (
                 <Copyable text={slot.toString()}>
                     <Link href={slotPath}>{slot.toLocaleString('en-US')}</Link>
