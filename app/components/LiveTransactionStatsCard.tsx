@@ -192,36 +192,14 @@ function TpsBarChart({ performanceInfo, series, setSeries }: TpsBarChartProps) {
                 <div className="d-flex justify-content-between w-100">
                     <span className="mb-0 font-size-sm card-header-title">TPS history</span>
 
-                    <div
-                        className="font-size-sm"
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            padding: '5px',
-                            background: '#F2F5FA',
-                            borderRadius: '6px',
-                            gap: '4px',
-                        }}
-                    >
+                    <div className="font-size-sm tps-series-container">
                         {SERIES.map(key => (
                             <button
                                 key={key}
                                 onClick={() => setSeries(key)}
-                                className={classNames('btn btn-sm', {
+                                className={classNames('tps-series-button', {
                                     active: series === key,
                                 })}
-                                style={{
-                                    background: series === key ? '#4723F5' : 'transparent',
-                                    padding: '4px 10px',
-                                    fontSize: '14px',
-                                    border: 'none',
-                                    color: series === key ? 'white' : '#93999E',
-                                    fontWeight: series === key ? '500' : '400',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    borderRadius: '6px',
-                                    display: 'flex',
-                                }}
                             >
                                 {SERIES_INFO[key].interval}
                             </button>

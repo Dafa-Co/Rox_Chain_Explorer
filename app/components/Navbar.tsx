@@ -25,56 +25,16 @@ export function Navbar({ children }: INavbarProps) {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
-            <div
-                className="e-px-4"
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '1.25rem',
-                    paddingLeft: '1rem',
-                    paddingRight: '1rem',
-                    width: '100%',
-                }}
-            >
-                <div
-                    className="e-flex e-flex-row e-items-center e-justify-between"
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        width: '100%',
-                    }}
-                >
-                    <div
-                        className="e-flex e-flex-row e-items-center"
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            flexDirection: 'row',
-                            width: '100%',
-                            gap: '20px',
-                        }}
-                    >
+            <div className="navbar-container">
+                <div className="navbar-main-row">
+                    <div className="navbar-left-section">
                         <Link href={homePath}>
                             <Image alt="Rox Explorer" height={40} src={Logo} width={214} />
                         </Link>
 
-                        <span
-                            className="e-flex e-flex-row !e-items-center"
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                flexDirection: 'row',
-                                gap: '4px',
-                                height: '36px',
-                                padding: '10px 16px',
-                                borderRadius: '99px',
-                                background: 'rgba(255, 255, 255, 0.10)',
-                            }}
-                        >
+                        <span className="navbar-price-badge">
                             <Image alt="Rox Explorer" height={18} src={roxLogo} width={18} />
-                            <p style={{ marginBottom: 0, fontSize: '14px', fontWeight: 500 }} className="text-white">
+                            <p className="navbar-price-text text-white">
                                 <span style={{ fontWeight: 600 }}> $ROX = $1.00</span>{' '}
                                 <span style={{ color: '#169452', fontWeight: 600 }}>0.00%</span> | Txn fee:{' '}
                                 <span style={{ fontWeight: 600 }} className="text-white">
@@ -85,72 +45,24 @@ export function Navbar({ children }: INavbarProps) {
                         </span>
                     </div>
 
-                    <div
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center !important',
-                            flexDirection: 'row',
-                            gap: '16px',
-                        }}
-                        className="flex-shrink-0 ms-1"
-                    >
+                    <div className="navbar-right-section flex-shrink-0 ms-1">
                         <a href="https://roxcustody.io/" target="_blank" rel="noopener noreferrer">
-                            <p style={{ marginBottom: 0, fontWeight: 400, fontSize: '14px' }} className="text-white">
-                                Rox Custody
-                            </p>
+                            <p className="navbar-link-text text-white">Rox Custody</p>
                         </a>
 
                         <a href="https://documentation.roxcustody.io" target="_blank" rel="noopener noreferrer">
-                            <p style={{ marginBottom: 0, fontWeight: 400, fontSize: '14px' }} className="text-white">
-                                Documentation
-                            </p>
+                            <p className="navbar-link-text text-white">Documentation</p>
                         </a>
 
                         <ClusterStatusButton />
                     </div>
                 </div>
 
-                {/* <button className="navbar-toggler" type="button" onClick={navHandlers.toggle}>
-                    <span className="navbar-toggler-icon"></span>
-                </button> */}
+                <div className="px-4 w-75">
+                    <p className="navbar-subtitle">Explorer RoxChain</p>
 
-                <div>
-                    <p className="text-white px-4">Explorer RoxChain</p>
-
-                    <div className="navbar-children d-flex align-items-center flex-grow-1 w-75 h-100 d-none d-lg-block">
-                        {children}
-                    </div>
+                    <div className="navbar-children-container  d-none d-lg-block">{children}</div>
                 </div>
-
-                {/* 
-                <div className={`collapse navbar-collapse ms-auto ${navOpened ? 'show' : ''} flex-shrink-0`}>
-                    <ul className="navbar-nav me-auto">
-                        <li className="nav-item">
-                            <Link
-                                className={`nav-link${selectedLayoutSegment === 'supply' ? ' active' : ''}`}
-                                href={supplyPath}
-                            >
-                                Supply
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link
-                                className={`nav-link${
-                                    selectedLayoutSegments[0] === 'tx' && selectedLayoutSegments[1] === '(inspector)'
-                                        ? ' active'
-                                        : ''
-                                }`}
-                                href={inspectorPath}
-                            >
-                                Inspector
-                            </Link>
-                        </li>
-                    </ul>
-                </div> */}
-
-                {/* <div className="d-none d-lg-block flex-shrink-0 ms-1">
-                    <ClusterStatusButton />
-                </div> */}
             </div>
         </nav>
     );
