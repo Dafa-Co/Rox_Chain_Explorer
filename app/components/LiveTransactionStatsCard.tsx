@@ -139,7 +139,7 @@ const TPS_CHART_OPTIONS = (historyMaxTps: number): ChartOptions<'bar'> => {
                     },
                     precision: 0,
                     stepSize: 500,
-                    textStrokeColor: '#EEE',
+                    color: '#6C4FF7',
                 },
             },
         },
@@ -162,10 +162,10 @@ function TpsBarChart({ performanceInfo, series, setSeries }: TpsBarChartProps) {
     const chartData: ChartData<'bar'> = {
         datasets: [
             {
-                backgroundColor: '#5C43D2',
+                backgroundColor: '#6C4FF7',
                 borderWidth: 0,
                 data: seriesData.map(val => val || 0),
-                hoverBackgroundColor: '#5C43D2',
+                hoverBackgroundColor: '#6C4FF7',
             },
         ],
         labels: seriesData.map((val, i) => {
