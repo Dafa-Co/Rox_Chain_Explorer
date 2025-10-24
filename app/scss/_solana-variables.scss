@@ -53,6 +53,11 @@ $link-color: #0d0d0e;
     font-family: Saira, Helvetica, sans-serif;
 }
 
+// Skyline font utility class
+.font-skyline {
+    font-family: var(--font-skyline);
+}
+
 .text-rainbow {
     background: linear-gradient(0.3turn, #e400ff, #00ffbd);
     background-clip: text;

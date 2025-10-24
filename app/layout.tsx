@@ -1,4 +1,5 @@
 import './scss/theme-dark.scss';
+import './fonts/skyline/skyline.css';
 
 import { ClusterModal } from '@components/ClusterModal';
 import { ClusterStatusButton } from '@components/ClusterStatusButton';
@@ -48,7 +49,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={`${rubikFont.variable} ${lexendFont.variable}`}>
+        <html
+            lang="en"
+            className={`${rubikFont.variable} ${lexendFont.variable}`}
+            style={{ '--font-skyline': 'SkylineRegular, sans-serif' } as React.CSSProperties}
+        >
             <head>
                 <link rel="icon" href="/favicon.svg" type="image/png" />
                 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

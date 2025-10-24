@@ -74,7 +74,7 @@ export function Navbar({ children }: INavbarProps) {
             {isHomePage && (
                 <div className="home-banner">
                     <Image alt="Rox Explorer" height={42} src={Logo} width={164} />
-                    <p className="text-white text-center mb-0 home-banner-text">
+                    <p className="font-skyline  text-center mb-0 home-banner-text">
                         The Institutional-Grade Digital-Asset Platform
                     </p>
                 </div>

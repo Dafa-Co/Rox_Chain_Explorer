@@ -18,6 +18,7 @@ const config: Config = {
         extend: {
             fontFamily: {
                 lexend: ['var(--font-lexend)', 'system-ui', 'sans-serif'],
+                skyline: ['var(--font-skyline)', 'SkylineRegular', 'sans-serif'],
             },
             boxShadow: {
                 // border for active states from Dashkit
