@@ -35,9 +35,7 @@ export function LiveTransactionStatsCard() {
     return (
         <div className="card flex-grow-1 d-flex flex-column">
             <div className="card-header">
-                <h4 style={{ fontSize: '18px', fontWeight: '700' }} className="card-header-title">
-                    Live Transaction Stats
-                </h4>
+                <h4 className="card-header-title-lg">Live Transaction Stats</h4>
             </div>
             <TpsCardBody series={series} setSeries={setSeries} />
         </div>
