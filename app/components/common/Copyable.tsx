@@ -28,7 +28,7 @@ export function Copyable({
 
     function CopyIcon() {
         if (state === 'copy') {
-            return <Copy color="#4723F5" className="align-text-top c-pointer" onClick={handleClick} size={16} />;
+            return <Copy color="#4723F5" className="align-middle c-pointer" onClick={handleClick} size={16} />;
         } else if (state === 'copied') {
             return <CheckCircle className="align-text-top" size={13} />;
         } else if (state === 'errored') {
@@ -54,7 +54,7 @@ export function Copyable({
     function PrependCopyIcon() {
         return (
             <>
-                <span className="font-size-tiny me-2">
+                <span className="font-size-tiny my-auto me-2">
                     <span className={textColor}>
                         {message !== undefined && <span className="me-2">{message}</span>}
                         <CopyIcon />
