@@ -567,8 +567,7 @@ pre {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 32px 46px !important;
     width: 100%;
 }
 
@@ -610,18 +609,20 @@ pre {
     margin-bottom: 0;
     font-size: 14px;
     font-weight: 500;
+    font-family: var(--font-lexend);
 }
 
 .navbar-link-text {
     margin-bottom: 0;
     font-weight: 400;
     font-size: 14px;
+    font-family: var(--font-lexend);
 }
 
 .navbar-subtitle {
     color: white;
-    padding-left: 1rem;
     padding-right: 1rem;
+    font-family: var(--font-lexend);
 }
 
 .navbar-children-container {

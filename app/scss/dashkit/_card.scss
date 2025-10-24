@@ -52,14 +52,25 @@
     color: #0d0d0e !important;
     font-size: 16px !important;
     line-height: 24px !important;
+    font-family: var(--font-lexend);
 }
 
-.card-header-title-large {
+.card-header-title-2xl {
     margin-bottom: 0;
     color: #0d0d0e !important;
     font-size: 20px !important;
     font-weight: 400 !important;
     line-height: 24px !important;
+    font-family: var(--font-lexend);
+}
+
+.card-header-title-lg {
+    margin-bottom: 0;
+    color: #0d0d0e !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 24px !important;
+    font-family: var(--font-lexend);
 }
 
 .card-header-slot {
@@ -67,6 +78,7 @@
     font-weight: 400 !important;
     font-size: 16px !important;
     line-height: 24px !important;
+    font-family: var(--font-lexend);
 }
 
 .card-header-tabs {

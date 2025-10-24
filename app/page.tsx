@@ -183,9 +183,7 @@ function StatsCardBody() {
                 <div className="card-header">
                     <div className="row align-items-center">
                         <div className="col">
-                            <h4 style={{ fontSize: '18px', fontWeight: '700' }} className="card-header-title">
-                                Live Cluster Stats
-                            </h4>
+                            <h4 className="card-header-title-lg">Live Cluster Stats</h4>
                         </div>
                     </div>
                 </div>
@@ -271,9 +269,7 @@ function StatsCardBody2() {
                 <div className="card-header">
                     <div className="row align-items-center">
                         <div className="col">
-                            <h4 style={{ fontSize: '18px', fontWeight: '700' }} className="card-header-title">
-                                Live Cluster Stats
-                            </h4>
+                            <h4 className="card-header-title-lg">Live Cluster Stats</h4>
                         </div>
                     </div>
                 </div>

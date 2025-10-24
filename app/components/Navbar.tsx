@@ -29,7 +29,7 @@ export function Navbar({ children }: INavbarProps) {
                 <div className="navbar-main-row">
                     <div className="navbar-left-section">
                         <Link href={homePath}>
-                            <Image alt="Rox Explorer" height={40} src={Logo} width={214} />
+                            <Image alt="Rox Explorer" height={42} src={Logo} width={164} />
                         </Link>
 
                         <span className="navbar-price-badge">

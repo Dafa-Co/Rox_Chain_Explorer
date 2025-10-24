@@ -8,7 +8,7 @@ import { ClusterProvider } from '@providers/cluster';
 import { ScrollAnchorProvider } from '@providers/scroll-anchor';
 import type { Viewport } from 'next';
 import dynamic from 'next/dynamic';
-import { Rubik } from 'next/font/google';
+import { Lexend, Rubik } from 'next/font/google';
 import { Metadata } from 'next/types';
 const SearchBar = dynamic(() => import('@components/SearchBar'), {
     ssr: false,
@@ -33,6 +33,13 @@ const rubikFont = Rubik({
     weight: ['300', '400', '700'],
 });
 
+const lexendFont = Lexend({
+    display: 'swap',
+    subsets: ['latin'],
+    variable: '--font-lexend',
+    weight: ['300', '400', '500', '600', '700'],
+});
+
 export default function RootLayout({
     analytics,
     children,
@@ -41,7 +48,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={`${rubikFont.variable}`}>
+        <html lang="en" className={`${rubikFont.variable} ${lexendFont.variable}`}>
             <head>
                 <link rel="icon" href="/favicon.svg" type="image/png" />
                 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
