@@ -30,8 +30,8 @@ export function NFTokenAccountHeader({ account }: { account: Account }) {
 
     return (
         <>
-            <h6 className="header-pretitle">Details</h6>
-            <h2 className="header-title">Account</h2>
+            <h6 className="header-pretitle card-header-slot">Details</h6>
+            <h2 className="header-title card-header-title">Account</h2>
         </>
     );
 }

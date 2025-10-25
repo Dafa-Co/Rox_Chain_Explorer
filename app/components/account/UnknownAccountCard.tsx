@@ -18,41 +18,41 @@ export function UnknownAccountCard({ account }: { account: Account }) {
 
             <TableCardBody>
                 <tr>
-                    <td>Address</td>
-                    <td className="text-lg-end">
+                    <td className="card-header-slot">Address</td>
+                    <td className="text-lg-end card-header-title">
                         <Address pubkey={account.pubkey} alignRight raw />
                     </td>
                 </tr>
                 {label && (
                     <tr>
-                        <td>Address Label</td>
-                        <td className="text-lg-end">{label}</td>
+                        <td className="card-header-slot">Address Label</td>
+                        <td className="text-lg-end card-header-title">{label}</td>
                     </tr>
                 )}
                 <tr>
-                    <td>Balance (ROX)</td>
-                    <td className="text-lg-end">
+                    <td className="card-header-slot">Balance (ROX)</td>
+                    <td className="text-lg-end card-header-title">
                         {account.lamports === 0 ? 'Account does not exist' : <SolBalance lamports={account.lamports} />}
                     </td>
                 </tr>
 
                 {account.space !== undefined && (
                     <tr>
-                        <td>Allocated Data Size</td>
-                        <td className="text-lg-end">{account.space} byte(s)</td>
+                        <td className="card-header-slot">Allocated Data Size</td>
+                        <td className="text-lg-end card-header-title">{account.space} byte(s)</td>
                     </tr>
                 )}
 
                 <tr>
-                    <td>Assigned Program Id</td>
-                    <td className="text-lg-end">
+                    <td className="card-header-slot">Assigned Program Id</td>
+                    <td className="text-lg-end card-header-title">
                         <Address pubkey={account.owner} alignRight link />
                     </td>
                 </tr>
 
                 <tr>
-                    <td>Executable</td>
-                    <td className="text-lg-end">{account.executable ? 'Yes' : 'No'}</td>
+                    <td className="card-header-slot">Executable</td>
+                    <td className="text-lg-end card-header-title">{account.executable ? 'Yes' : 'No'}</td>
                 </tr>
             </TableCardBody>
         </div>

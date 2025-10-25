@@ -18,7 +18,7 @@ export interface TableCardBodyProps extends VariantProps<typeof tableVariants>, 
 export function TableCardBody({ children, ...props }: TableCardBodyProps) {
     return (
         <div className="table-responsive mb-0">
-            <table className={tableVariants(props)}>
+            <table className={`${tableVariants(props)} table-card-body`}>
                 <tbody className="list">{children}</tbody>
             </table>
         </div>

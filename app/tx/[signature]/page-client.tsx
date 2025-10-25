@@ -119,10 +119,10 @@ export default function TransactionDetailsPageClient({ params: { signature: raw 
 
     return (
         <div className="container">
-            <div className="header">
-                <div className="header-body">
-                    <h6 className="header-pretitle">Details</h6>
-                    <h2 className="header-title">Transaction</h2>
+            <div className="header mt-5">
+                <div className="header-body bg-white px-4">
+                    <h6 className="header-pretitle card-header-slot">Details</h6>
+                    <h2 className="header-title card-header-title">Transaction</h2>
                 </div>
             </div>
             {signature === undefined ? (
@@ -245,15 +245,15 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
 
             <TableCardBody>
                 <tr>
-                    <td>Signature</td>
-                    <td className="text-lg-end">
+                    <td className="card-header-slot">Signature</td>
+                    <td className="text-lg-end card-header-title">
                         <Signature signature={signature} alignRight />
                     </td>
                 </tr>
 
                 <tr>
-                    <td>Result</td>
-                    <td className="text-lg-end">
+                    <td className="card-header-slot">Result</td>
+                    <td className="text-lg-end card-header-title">
                         <h3 className="mb-0">
                             <span className={`badge bg-${statusClass}-soft`}>{statusText}</span>
                         </h3>
@@ -262,8 +262,8 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
 
                 {errorReason !== undefined && (
                     <tr>
-                        <td>Error</td>
-                        <td className="text-lg-end">
+                        <td className="card-header-slot">Error</td>
+                        <td className="text-lg-end card-header-title">
                             <h3 className="mb-0">
                                 {errorLink !== undefined ? (
                                     <Link href={errorLink}>
@@ -278,8 +278,8 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
                 )}
 
                 <tr>
-                    <td>Transfer Amount (ROX)</td>
-                    <td className="text-lg-end">
+                    <td className="card-header-slot">Transfer Amount (ROX)</td>
+                    <td className="text-lg-end card-header-title">
                         <SolBalance
                             lamports={
                                 (
@@ -294,16 +294,16 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
 
                 {fee !== undefined && (
                     <tr>
-                        <td>Fee (ROX)</td>
-                        <td className="text-lg-end">
+                        <td className="card-header-slot">Fee (ROX)</td>
+                        <td className="text-lg-end card-header-title">
                             <SolBalance lamports={fee} />
                         </td>
                     </tr>
                 )}
 
                 <tr>
-                    <td>Timestamp</td>
-                    <td className="text-lg-end">
+                    <td className="card-header-slot">Timestamp</td>
+                    <td className="text-lg-end card-header-title">
                         {info.timestamp !== 'unavailable' ? (
                             <span className="font-monospace">{displayTimestamp(info.timestamp * 1000)}</span>
                         ) : (
@@ -325,15 +325,15 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
                 </tr> */}
 
                 <tr>
-                    <td>Slot</td>
-                    <td className="text-lg-end">
+                    <td className="card-header-slot">Slot</td>
+                    <td className="text-lg-end card-header-title">
                         <Slot slot={info.slot} link />
                     </td>
                 </tr>
 
                 {blockhash && (
                     <tr>
-                        <td>
+                        <td className="card-header-slot">
                             Recent Blockhash
                             {/* {isNonce ? (
                                 'Nonce'
@@ -343,14 +343,14 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
                                 </InfoTooltip>
                             )} */}
                         </td>
-                        <td className="text-lg-end">{blockhash}</td>
+                        <td className="text-lg-end card-header-title">{blockhash}</td>
                     </tr>
                 )}
 
                 {costUnits !== undefined && (
                     <tr>
-                        <td>Transaction cost</td>
-                        <td className="text-lg-end">{costUnits.toLocaleString('en-US')}</td>
+                        <td className="card-header-slot">Transaction cost</td>
+                        <td className="text-lg-end card-header-title">{costUnits.toLocaleString('en-US')}</td>
                     </tr>
                 )}
             </TableCardBody>
@@ -419,14 +419,14 @@ function AccountsCard({ signature }: SignatureProps) {
 
         return (
             <tr key={key}>
-                <td>{index + 1}</td>
+                <td className="card-header-slot">{index + 1}</td>
                 <td>
                     <Address pubkey={pubkey} link fetchTokenLabelInfo />
                 </td>
                 <td>
                     <BalanceDelta delta={delta} isSol />
                 </td>
-                <td>
+                <td className='text-lg-center card-header-title'>
                     <SolBalance lamports={post} />
                 </td>
                 <td>
@@ -453,11 +453,11 @@ function AccountsCard({ signature }: SignatureProps) {
                 <table className="table table-sm table-nowrap card-table">
                     <thead>
                         <tr>
-                            <th className="text-muted">#</th>
-                            <th className="text-muted">Address</th>
-                            <th className="text-muted">Change (ROX)</th>
-                            <th className="text-muted">Post Balance (ROX)</th>
-                            <th className="text-muted">Details</th>
+                            <th className="text-muted card-header-slot">#</th>
+                            <th className="text-muted card-header-slot">Address</th>
+                            <th className="text-muted card-header-slot">Change (ROX)</th>
+                            <th className="text-muted card-header-slot">Post Balance (ROX)</th>
+                            <th className="text-muted card-header-slot">Details</th>
                         </tr>
                     </thead>
                     <tbody className="list">{accountRows}</tbody>

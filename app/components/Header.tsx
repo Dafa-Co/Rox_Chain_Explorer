@@ -10,8 +10,8 @@ export function Header({ address, account, tokenInfo, isTokenInfoLoading }: Head
     const coinInfo = useCoinGecko(tokenInfo?.extensions?.coingeckoId);
 
     return (
-        <div className="header">
-            <div className="header-body e-flex e-flex-col e-gap-4 md:e-flex-row md:e-items-end  md:e-justify-between md:e-gap-1">
+        <div className="header mt-5">
+            <div className="header-body px-4 bg-white e-flex e-flex-col e-gap-4 md:e-flex-row md:e-items-end  md:e-justify-between md:e-gap-1">
                 <AccountHeader
                     address={address}
                     account={account}

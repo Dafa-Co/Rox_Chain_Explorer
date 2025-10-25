@@ -119,17 +119,17 @@ export function ComputeBudgetDetailsCard({
                         childIndex={childIndex}
                     >
                         <tr>
-                            <td>Program</td>
-                            <td className="text-lg-end">
+                            <td className="card-header-slot">Program</td>
+                            <td className="text-lg-end card-header-title">
                                 <Address pubkey={ix.programId} alignRight link />
                             </td>
                         </tr>
 
                         <tr>
-                            <td>Compute Unit Limit</td>
-                            <td className="text-lg-end font-monospace">{`${new Intl.NumberFormat('en-US').format(
-                                units
-                            )} compute units`}</td>
+                            <td className="card-header-slot">Compute Unit Limit</td>
+                            <td className="text-lg-end card-header-title font-monospace">{`${new Intl.NumberFormat(
+                                'en-US'
+                            ).format(units)} compute units`}</td>
                         </tr>
                     </InstructionCardComponent>
                 );
@@ -151,15 +151,15 @@ export function ComputeBudgetDetailsCard({
                         childIndex={childIndex}
                     >
                         <tr>
-                            <td>Program</td>
-                            <td className="text-lg-end">
+                            <td className="card-header-slot">Program</td>
+                            <td className="text-lg-end card-header-title">
                                 <Address pubkey={ix.programId} alignRight link />
                             </td>
                         </tr>
 
                         <tr>
-                            <td>Compute Unit Price</td>
-                            <td className="text-lg-end font-monospace">{`${microLamportsToLamportsString(
+                            <td className="card-header-slot">Compute Unit Price</td>
+                            <td className="text-lg-end card-header-title font-monospace">{`${microLamportsToLamportsString(
                                 microLamports
                             )} lamports per compute unit`}</td>
                         </tr>
@@ -183,15 +183,15 @@ export function ComputeBudgetDetailsCard({
                         childIndex={childIndex}
                     >
                         <tr>
-                            <td>Program</td>
-                            <td className="text-lg-end">
+                            <td className="card-header-slot">Program</td>
+                            <td className="text-lg-end card-header-title">
                                 <Address pubkey={ix.programId} alignRight link />
                             </td>
                         </tr>
 
                         <tr>
-                            <td>Account Data Size Limit</td>
-                            <td className="text-lg-end font-monospace">{`${accountDataSizeLimit} bytes`}</td>
+                            <td className="card-header-slot">Account Data Size Limit</td>
+                            <td className="text-lg-end card-header-title font-monospace">{`${accountDataSizeLimit} bytes`}</td>
                         </tr>
                     </InstructionCardComponent>
                 );
