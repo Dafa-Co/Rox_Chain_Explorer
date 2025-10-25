@@ -119,9 +119,9 @@ export default function TransactionDetailsPageClient({ params: { signature: raw 
 
     return (
         <div className="container">
-            <div className="header">
+            <div className="header mt-5">
                 <div className="header-body bg-white px-4">
-                    <h6 className="header-pretitle card-header-slot ">Details</h6>
+                    <h6 className="header-pretitle card-header-slot">Details</h6>
                     <h2 className="header-title card-header-title">Transaction</h2>
                 </div>
             </div>
@@ -426,7 +426,7 @@ function AccountsCard({ signature }: SignatureProps) {
                 <td>
                     <BalanceDelta delta={delta} isSol />
                 </td>
-                <td>
+                <td className='text-lg-center card-header-title'>
                     <SolBalance lamports={post} />
                 </td>
                 <td>
