@@ -26,29 +26,29 @@ export function TransferDetailsCard(props: {
             childIndex={childIndex}
         >
             <tr>
-                <td>Program</td>
-                <td className="text-lg-end">
+                <td className="card-header-slot">Program</td>
+                <td className="text-lg-end card-header-title">
                     <Address pubkey={SystemProgram.programId} alignRight link />
                 </td>
             </tr>
 
             <tr>
-                <td>From Address</td>
-                <td className="text-lg-end">
+                <td className="card-header-slot">From Address</td>
+                <td className="text-lg-end card-header-title    ">
                     <Address pubkey={info.source} alignRight link />
                 </td>
             </tr>
 
             <tr>
-                <td>To Address</td>
-                <td className="text-lg-end">
+                <td className="card-header-slot">To Address</td>
+                <td className="text-lg-end card-header-title">
                     <Address pubkey={info.destination} alignRight link />
                 </td>
             </tr>
 
             <tr>
-                <td>Transfer Amount (ROX)</td>
-                <td className="text-lg-end">
+                <td className="card-header-slot">Transfer Amount (ROX)</td>
+                <td className="text-lg-end card-header-title">
                     <SolBalance lamports={info.lamports} />
                 </td>
             </tr>

@@ -1,6 +1,6 @@
 :root {
-    --bs-body-bg-rgb: 22, 27, 25;
-    --bs-body-bg: #161a19;
+    --bs-body-bg-rgb: 247, 249, 252;
+    --bs-body-bg: ##f2f5fa;
     --bs-body-color-rgb: 255, 255, 255;
     --bs-body-color: #fff;
     --bs-body-font-family: var(--explorer-default-font);

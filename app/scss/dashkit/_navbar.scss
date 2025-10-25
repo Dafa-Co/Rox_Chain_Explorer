@@ -24,7 +24,6 @@
     }
 }
 
-
 // Navbar dark
 
 .navbar-dark {
@@ -89,7 +88,7 @@
 // Navbar light
 
 .navbar-light {
-    background-color: $navbar-light-bg;
+    background: linear-gradient(90deg, #1f1357 0.01%, #0c0627 100.69%);
     border-color: $navbar-light-border-color;
 }
 
@@ -296,7 +295,6 @@
                             transform: translateY(0);
                         }
                     }
-
                 }
             }
         }

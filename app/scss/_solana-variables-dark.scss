@@ -5,22 +5,23 @@
 
 // Example of a variable override to change Dashkit's background color
 // Remove the "//" to comment it in and see it in action!
-$body-bg: #070416 !default;
+$body-bg: #f7f9fc !default;
 
 $black: #232323;
 $white: #fff !default;
-$gray-600: #AEA5DD;
-$gray-600-dark: #4B3F88 !default;
-$gray-700-dark: #362D65 !default;
+$gray-600: #aea5dd;
+$gray-600-dark: #4b3f88 !default;
+$gray-700-dark: #362d65 !default;
 $gray-800-dark: #161033 !default;
-$black-dark: #281E55 !default;
+
+$black-dark: #281e55 !default;
 $input-placeholder-color: #ccc !default;
 
-$primary: #6C4FF7 !default;
+$primary: #6c4ff7 !default;
 $success: #26e97e !default;
 $warning: #fa62fc !default;
 $card-border-color: $gray-700-dark !default;
-$card-outline-color: #23175D !default;
+$card-outline-color: #ffffff !default;
 
 $input-bg: transparent !default;
 $input-border-color: $gray-600-dark !default;

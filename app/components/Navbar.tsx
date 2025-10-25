@@ -1,5 +1,6 @@
 'use client';
 
+import roxLogo from '@img/logos-solana/rox-chain.svg';
 import Logo from '@img/logos-solana/light-explorer-logo.svg';
 import { useDisclosure } from '@mantine/hooks';
 import { useClusterPath } from '@utils/url';
@@ -7,7 +8,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 // import { useSelectedLayoutSegment, useSelectedLayoutSegments } from 'next/navigation';
 import React, { ReactNode } from 'react';
-
 import { ClusterStatusButton } from './ClusterStatusButton';
 
 export interface INavbarProps {
@@ -22,48 +22,44 @@ export function Navbar({ children }: INavbarProps) {
     // const inspectorPath = useClusterPath({ pathname: '/tx/inspector' });
     // const selectedLayoutSegment = useSelectedLayoutSegment();
     // const selectedLayoutSegments = useSelectedLayoutSegments();
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
-            <div className="container px-4">
-                <Link href={homePath}>
-                    <Image alt="Rox Explorer" height={40} src={Logo} width={214} />
-                </Link>
+            <div className="navbar-container px-10">
+                <div className="navbar-main-row">
+                    <div className="navbar-left-section">
+                        <Link href={homePath}>
+                            <Image alt="Rox Explorer" height={40} src={Logo}  />
+                        </Link>
 
-                <button className="navbar-toggler" type="button" onClick={navHandlers.toggle}>
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+                        <span className="navbar-price-badge">
+                            <Image alt="Rox Explorer" height={20} src={roxLogo} width={20} />
+                            <p className="navbar-price-text text-white">
+                                <span className="price-value">$ROX = $1.00</span>{' '}
+                                <span className="price-change mx-1">0.00%</span> 
+                                <span className="txn-fee">
+                                    <span className='mx-2'>|</span> Txn fee: <span className="txn-fee-value">0.000005 ROX</span> per signature
+                                </span> 
+                            </p>
+                        </span>
+                    </div>
 
-                <div className="navbar-children d-flex align-items-center flex-grow-1 w-100 h-100 d-none d-lg-block">
-                    {children}
+                    <div className="navbar-right-section flex-shrink-0 ms-1">
+                        <a href="https://roxcustody.io/" target="_blank" rel="noopener noreferrer">
+                            <p className="navbar-link-text text-white">Rox Custody</p>
+                        </a>
+
+                        <a href="https://documentation.roxcustody.io" target="_blank" rel="noopener noreferrer">
+                            <p className="navbar-link-text text-white">Documentation</p>
+                        </a>
+
+                        <ClusterStatusButton />
+                    </div>
                 </div>
-                {/* 
-                <div className={`collapse navbar-collapse ms-auto ${navOpened ? 'show' : ''} flex-shrink-0`}>
-                    <ul className="navbar-nav me-auto">
-                        <li className="nav-item">
-                            <Link
-                                className={`nav-link${selectedLayoutSegment === 'supply' ? ' active' : ''}`}
-                                href={supplyPath}
-                            >
-                                Supply
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link
-                                className={`nav-link${
-                                    selectedLayoutSegments[0] === 'tx' && selectedLayoutSegments[1] === '(inspector)'
-                                        ? ' active'
-                                        : ''
-                                }`}
-                                href={inspectorPath}
-                            >
-                                Inspector
-                            </Link>
-                        </li>
-                    </ul>
-                </div> */}
 
-                <div className="d-none d-lg-block flex-shrink-0 ms-1">
-                    <ClusterStatusButton />
+                <div className="px-3 w-75">
+                    <p className="navbar-subtitle ps-0">Explorer RoxChain</p>
+                    <div className="navbar-children-container d-none d-lg-block">{children}</div>
                 </div>
             </div>
         </nav>
