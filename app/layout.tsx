@@ -2,7 +2,7 @@ import './scss/theme-dark.scss';
 import './fonts/skyline/skyline.css';
 
 import { ClusterModal } from '@components/ClusterModal';
-import { ClusterStatusButton } from '@components/ClusterStatusButton';
+// import { ClusterStatusButton } from '@components/ClusterStatusButton';
 import { MessageBanner } from '@components/MessageBanner';
 import { Navbar } from '@components/Navbar';
 import { ClusterProvider } from '@providers/cluster';
@@ -67,13 +67,17 @@ export default function RootLayout({
                             <Navbar>
                                 <SearchBar />
                             </Navbar>
+
                             <MessageBanner />
-                            <div className="container my-3 d-lg-none">
+
+                            {/* <div className="container my-3 d-lg-none">
                                 <SearchBar />
                             </div>
+
                             <div className="container my-3 d-lg-none">
                                 <ClusterStatusButton />
-                            </div>
+                            </div> */}
+
                             {children}
                         </div>
                     </ClusterProvider>
