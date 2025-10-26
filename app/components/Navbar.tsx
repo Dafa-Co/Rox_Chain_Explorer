@@ -27,24 +27,24 @@ export function Navbar({ children }: INavbarProps) {
     // const selectedLayoutSegments = useSelectedLayoutSegments();
 
     return (
-        <div className="navbar-wrapper d-flex flex-column">
-            <nav className="navbar navbar-expand-lg navbar-light navbar-no-margin">
-                <div className="navbar-container">
+        <>
+            <nav className="navbar navbar-expand-lg navbar-light">
+                <div className="navbar-container px-10">
                     <div className="navbar-main-row">
                         <div className="navbar-left-section">
                             <Link href={homePath}>
-                                <Image alt="Rox Explorer" height={42} src={Logo} width={164} />
+                                <Image alt="Rox Explorer" height={40} src={Logo} />
                             </Link>
 
                             <span className="navbar-price-badge">
-                                <Image alt="Rox Explorer" height={18} src={roxLogo} width={18} />
+                                <Image alt="Rox Explorer" height={20} src={roxLogo} width={20} />
                                 <p className="navbar-price-text text-white">
-                                    <span style={{ fontWeight: 600 }}> $ROX = $1.00</span>{' '}
-                                    <span style={{ color: '#169452', fontWeight: 600 }}>0.00%</span> | Txn fee:{' '}
-                                    <span style={{ fontWeight: 600 }} className="text-white">
-                                        0.000005 ROX
-                                    </span>{' '}
-                                    per signature
+                                    <span className="price-value">$ROX = $1.00</span>{' '}
+                                    <span className="price-change mx-1">0.00%</span>
+                                    <span className="txn-fee">
+                                        <span className="mx-2">|</span> Txn fee:{' '}
+                                        <span className="txn-fee-value">0.000005 ROX</span> per signature
+                                    </span>
                                 </p>
                             </span>
                         </div>
@@ -70,7 +70,6 @@ export function Navbar({ children }: INavbarProps) {
                 </div>
             </nav>
 
-            {/* Home Page Banner */}
             {isHomePage && (
                 <div className="home-banner">
                     <Image alt="Rox Explorer" height={42} src={Logo} width={164} />
@@ -79,6 +78,6 @@ export function Navbar({ children }: INavbarProps) {
                     </p>
                 </div>
             )}
-        </div>
+        </>
     );
 }

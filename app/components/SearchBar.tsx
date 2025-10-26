@@ -99,7 +99,7 @@ export function SearchBar() {
 
                 return (
                     <components.Control {...props}>
-                        <Search className="me-3" size={15} />
+                        <Search className="me-3 search-bar-icon" size={15} />
                         {children}
                         {hasValue ? (
                             <ClearIndicator onClick={clearHandler} onTouchStart={clearHandler} />
@@ -159,6 +159,24 @@ export function SearchBar() {
                         '&:focus': {
                             border: '1px solid #5746AC !important',
                             boxShadow: 'none !important',
+                        },
+                    }),
+                    menuList: style => ({
+                        ...style,
+                        backgroundColor: '#33266F !important',
+                        borderRadius: '8px !important',
+                        border: '1px solid #5746AC !important',
+                        boxShadow: 'none !important',
+                    }),
+                    option: style => ({
+                        ...style,
+                        color: '#FFFFFF !important',
+                        fontSize: '14px !important',
+                        fontWeight: '400 !important',
+                        lineHeight: '20px !important',
+                        backgroundColor: '#33266F !important',
+                        '&:hover': {
+                            backgroundColor: '#4723f5 !important',
                         },
                     }),
                     input: style => ({ ...style, width: '100%', boxShadow: 'none !important' }),

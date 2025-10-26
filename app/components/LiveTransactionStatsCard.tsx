@@ -176,7 +176,12 @@ function TpsBarChart({ performanceInfo, series, setSeries }: TpsBarChartProps) {
             <TableCardBody>
                 <tr>
                     <td className="w-100 card-header-slot">Transaction count</td>
-                    <td className="text-lg-end card-header-title-2xl font-monospace">{transactionCount}</td>
+                    <td
+                        className="text-lg-end font-monospace"
+                        style={{ color: '#0d0d0e', fontSize: '20px', fontWeight: '600' }}
+                    >
+                        {transactionCount}
+                    </td>
                 </tr>
                 <tr>
                     <td className="w-100 card-header-slot">Transactions per second (TPS)</td>

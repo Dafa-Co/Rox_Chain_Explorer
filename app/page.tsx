@@ -29,7 +29,7 @@ export default function Page() {
     return (
         <StatsProvider>
             <SupplyProvider>
-                <div className="container mt-4">
+                <div className="container mt-5">
                     {/* <StakingComponent /> */}
 
                     <div className="row d-flex">
@@ -216,12 +216,12 @@ function StatsCardBody() {
                     </tr> */}
                     <tr>
                         <td className="w-100 card-header-slot">Slot time (1hr average)</td>
-                        <td className="text-lg-end card-header-title font-monospace">{hourlySlotTime}ms</td>
+                        <td className="text-lg-end font-monospace" style={{ color: '#0d0d0e', fontSize: '20px', fontWeight: '600' }}>{hourlySlotTime}ms</td>
                     </tr>
                     <tr>
                         <td className="w-100 card-header-slot">Epoch</td>
                         <td className="text-lg-end card-header-title font-monospace">
-                            <Epoch epoch={epochInfo.epoch} link />
+                            <Epoch epoch={epochInfo.epoch} link fontSize={'16px'}/>
                         </td>
                     </tr>
                     <tr>
@@ -277,14 +277,14 @@ function StatsCardBody2() {
                     <tr>
                         <td className="w-100 card-header-slot">Slot</td>
                         <td className="text-lg-end card-header-title font-monospace">
-                            <Slot slot={absoluteSlot} link />
+                            <Slot slot={absoluteSlot} link fontWeight={'600'} fontSize='20px' />
                         </td>
                     </tr>
                     {blockHeight !== undefined && (
                         <tr>
                             <td className="w-100 card-header-slot">Block height</td>
                             <td className="text-lg-end card-header-title font-monospace">
-                                <Slot slot={blockHeight} />
+                                <Slot slot={blockHeight} fontSize={'16px'} />
                             </td>
                         </tr>
                     )}
