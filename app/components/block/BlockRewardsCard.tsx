@@ -22,11 +22,11 @@ export function BlockRewardsCard({ block }: { block: VersionedBlockResponse }) {
                 <table className="table table-sm table-nowrap card-table">
                     <thead>
                         <tr>
-                            <th className="text-muted">Address</th>
-                            <th className="text-muted">Type</th>
-                            <th className="text-muted">Amount</th>
-                            <th className="text-muted">New Balance</th>
-                            <th className="text-muted">Percent Change</th>
+                            <th className="text-muted card-header-slot">Address</th>
+                            <th className="text-muted card-header-slot">Type</th>
+                            <th className="text-muted card-header-slot">Amount</th>
+                            <th className="text-muted card-header-slot">New Balance</th>
+                            <th className="text-muted card-header-slot">Percent Change</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,7 +43,7 @@ export function BlockRewardsCard({ block }: { block: VersionedBlockResponse }) {
                                 ).toFixed(9);
                             }
                             return (
-                                <tr key={reward.pubkey + reward.rewardType}>
+                                <tr className="card-header-title" key={reward.pubkey + reward.rewardType}>
                                     <td>
                                         <Address pubkey={new PublicKey(reward.pubkey)} link />
                                     </td>

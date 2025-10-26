@@ -16,6 +16,10 @@ const config: Config = {
     prefix: 'e-',
     theme: {
         extend: {
+            fontFamily: {
+                lexend: ['var(--font-lexend)', 'system-ui', 'sans-serif'],
+                skyline: ['var(--font-skyline)', 'SkylineRegular', 'sans-serif'],
+            },
             boxShadow: {
                 // border for active states from Dashkit
                 active: '0 0 0 0.15rem #AA9AFA',

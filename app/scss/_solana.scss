@@ -55,9 +55,9 @@ ul.log-messages {
             top: 1.5rem;
         }
 
-        .popover-body {
-            color: white;
-        }
+        // .popover-body {
+        //     color: white;
+        // }
 
         .arrow.right {
             right: 1rem;
@@ -834,4 +834,31 @@ pre {
 
 .tps-series-button:hover {
     opacity: 0.8;
+}
+
+// Home Page Banner Styles
+.navbar-wrapper {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-no-margin {
+    margin: 0;
+}
+
+.home-banner {
+    align-items: center;
+    background: linear-gradient(180deg, #29148f 0%, #4723f5 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    padding-block: 22px;
+}
+
+.home-banner-text {
+    margin: 0;
+    color: #f6f4fe;
+    font-size: 36px;
+    font-weight: 950;
 }
