@@ -70,21 +70,21 @@ function BlockLayoutInner({ children, params: { slot } }: Props) {
                     </div>
                     <TableCardBody>
                         <tr>
-                            <td className="w-100">Blockhash</td>
-                            <td className="text-lg-end font-monospace">
+                            <td className="w-100 card-header-slot">Blockhash</td>
+                            <td className="text-lg-end font-monospace card-header-title">
                                 <span>{block.blockhash}</span>
                             </td>
                         </tr>
                         <tr>
-                            <td className="w-100">Slot</td>
-                            <td className="text-lg-end font-monospace">
+                            <td className="w-100 card-header-slot">Slot</td>
+                            <td className="text-lg-end font-monospace card-header-title">
                                 <Slot slot={slotNumber} />
                             </td>
                         </tr>
                         {blockLeader !== undefined && (
                             <tr>
-                                <td className="w-100">Slot Leader</td>
-                                <td className="text-lg-end">
+                                <td className="w-100 card-header-slot">Slot Leader</td>
+                                <td className="text-lg-end card-header-title">
                                     <Address pubkey={blockLeader} alignRight link />
                                 </td>
                             </tr>
@@ -92,16 +92,16 @@ function BlockLayoutInner({ children, params: { slot } }: Props) {
                         {block.blockTime ? (
                             <>
                                 <tr>
-                                    <td>Timestamp (Local)</td>
-                                    <td className="text-lg-end">
+                                    <td className="card-header-slot">Timestamp (Local)</td>
+                                    <td className="text-lg-end card-header-title">
                                         <span className="font-monospace">
                                             {displayTimestamp(block.blockTime * 1000, true)}
                                         </span>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Timestamp (UTC)</td>
-                                    <td className="text-lg-end">
+                                    <td className="card-header-slot">Timestamp (UTC)</td>
+                                    <td className="text-lg-end card-header-title">
                                         <span className="font-monospace">
                                             {displayTimestampUtc(block.blockTime * 1000, true)}
                                         </span>
@@ -110,77 +110,77 @@ function BlockLayoutInner({ children, params: { slot } }: Props) {
                             </>
                         ) : (
                             <tr>
-                                <td className="w-100">Timestamp</td>
-                                <td className="text-lg-end">Unavailable</td>
+                                <td className="w-100 card-header-slot">Timestamp</td>
+                                <td className="text-lg-end card-header-title">Unavailable</td>
                             </tr>
                         )}
                         {epoch !== undefined && (
                             <tr>
-                                <td className="w-100">Epoch</td>
-                                <td className="text-lg-end font-monospace">
+                                <td className="w-100 card-header-slot">Epoch</td>
+                                <td className="text-lg-end font-monospace card-header-title">
                                     <Epoch epoch={epoch} link />
                                 </td>
                             </tr>
                         )}
                         <tr>
-                            <td className="w-100">Parent Blockhash</td>
-                            <td className="text-lg-end font-monospace">
+                            <td className="w-100 card-header-slot">Parent Blockhash</td>
+                            <td className="text-lg-end font-monospace card-header-title">
                                 <span>{block.previousBlockhash}</span>
                             </td>
                         </tr>
                         <tr>
-                            <td className="w-100">Parent Slot</td>
-                            <td className="text-lg-end font-monospace">
+                            <td className="w-100 card-header-slot">Parent Slot</td>
+                            <td className="text-lg-end font-monospace card-header-title">
                                 <Slot slot={block.parentSlot} link />
                             </td>
                         </tr>
                         {parentLeader !== undefined && (
                             <tr>
-                                <td className="w-100">Parent Slot Leader</td>
-                                <td className="text-lg-end">
+                                <td className="w-100 card-header-slot">Parent Slot Leader</td>
+                                <td className="text-lg-end card-header-title">
                                     <Address pubkey={parentLeader} alignRight link />
                                 </td>
                             </tr>
                         )}
                         {childSlot !== undefined && (
                             <tr>
-                                <td className="w-100">Child Slot</td>
-                                <td className="text-lg-end font-monospace">
+                                <td className="w-100 card-header-slot">Child Slot</td>
+                                <td className="text-lg-end font-monospace card-header-title">
                                     <Slot slot={childSlot} link />
                                 </td>
                             </tr>
                         )}
                         {childLeader !== undefined && (
                             <tr>
-                                <td className="w-100">Child Slot Leader</td>
-                                <td className="text-lg-end">
+                                <td className="w-100 card-header-slot">Child Slot Leader</td>
+                                <td className="text-lg-end card-header-title">
                                     <Address pubkey={childLeader} alignRight link />
                                 </td>
                             </tr>
                         )}
                         <tr>
-                            <td className="w-100">Processed Transactions</td>
-                            <td className="text-lg-end font-monospace">
+                            <td className="w-100 card-header-slot">Processed Transactions</td>
+                            <td className="text-lg-end font-monospace card-header-title">
                                 <span>{block.transactions.length}</span>
                             </td>
                         </tr>
                         {showSuccessfulCount && (
                             <tr>
-                                <td className="w-100">Successful Transactions</td>
-                                <td className="text-lg-end font-monospace">
+                                <td className="w-100 card-header-slot">Successful Transactions</td>
+                                <td className="text-lg-end font-monospace card-header-title">
                                     <span>{successfulTxs.length}</span>
                                 </td>
                             </tr>
                         )}
                         <tr>
-                            <td className="w-100">Total Compute Units Consumed</td>
-                            <td className="text-lg-end font-monospace">
+                            <td className="w-100 card-header-slot">Total Compute Units Consumed</td>
+                            <td className="text-lg-end font-monospace card-header-title">
                                 <span>{totalCUs.toLocaleString()}</span>
                             </td>
                         </tr>
                         <tr>
-                            <td className="w-100">Transaction Cost Utilization</td>
-                            <td className="text-lg-end font-monospace">
+                            <td className="w-100 card-header-slot">Transaction Cost Utilization</td>
+                            <td className="text-lg-end font-monospace card-header-title">
                                 <span>
                                     {totalCostUnits.toLocaleString()} / {maxComputeUnits.toLocaleString()} (
                                     {Math.round((totalCostUnits / maxComputeUnits) * 100)}%)
@@ -188,8 +188,8 @@ function BlockLayoutInner({ children, params: { slot } }: Props) {
                             </td>
                         </tr>
                         <tr>
-                            <td className="w-100">Reserved Compute Units</td>
-                            <td className="text-lg-end font-monospace">
+                            <td className="w-100 card-header-slot">Reserved Compute Units</td>
+                            <td className="text-lg-end font-monospace card-header-title">
                                 <span>
                                     {totalRequestedCUs.toLocaleString()} / {maxComputeUnits.toLocaleString()} (
                                     {Math.round((totalRequestedCUs / maxComputeUnits) * 100)}%)
@@ -207,7 +207,7 @@ function BlockLayoutInner({ children, params: { slot } }: Props) {
             <div className="header">
                 <div className="header-body">
                     <h6 className="header-pretitle">Details</h6>
-                    <h2 className="header-title">Block</h2>
+                    <h2 className="header-title card-header-title">Block</h2>
                 </div>
             </div>
             {content}
@@ -279,7 +279,14 @@ function TabLink({ path, slot, title }: { path: string; slot: number; title: str
     const isActive = (selectedLayoutSegment === null && path === '') || selectedLayoutSegment === path;
     return (
         <li className="nav-item">
-            <Link className={`${isActive ? 'active ' : ''}nav-link`} href={tabPath} scroll={false}>
+            <Link
+                className={`${isActive ? 'active ' : ''}nav-link`}
+                style={{
+                    color: (isActive && 'black') || undefined,
+                }}
+                href={tabPath}
+                scroll={false}
+            >
                 {title}
             </Link>
         </li>

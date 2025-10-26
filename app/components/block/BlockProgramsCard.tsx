@@ -63,12 +63,12 @@ export function BlockProgramsCard({ block }: { block: VersionedBlockResponse }) 
                 </div>
                 <TableCardBody>
                     <tr>
-                        <td className="w-100">Unique Programs Count</td>
-                        <td className="text-lg-end font-monospace">{programEntries.length}</td>
+                        <td className="w-100 card-header-slot">Unique Programs Count</td>
+                        <td className="text-lg-end font-monospace card-header-title">{programEntries.length}</td>
                     </tr>
                     <tr>
-                        <td className="w-100">Total Instructions</td>
-                        <td className="text-lg-end font-monospace">{totalInstructions}</td>
+                        <td className="w-100 card-header-slot">Total Instructions</td>
+                        <td className="text-lg-end font-monospace card-header-title">{totalInstructions}</td>
                     </tr>
                 </TableCardBody>
             </div>
@@ -81,12 +81,12 @@ export function BlockProgramsCard({ block }: { block: VersionedBlockResponse }) 
                     <table className="table table-sm table-nowrap card-table">
                         <thead>
                             <tr>
-                                <th className="text-muted">Program</th>
-                                <th className="text-muted">Transaction Count</th>
-                                <th className="text-muted">% of Total</th>
-                                <th className="text-muted">Instruction Count</th>
-                                <th className="text-muted">% of Total</th>
-                                {showSuccessRate && <th className="text-muted">Success Rate</th>}
+                                <th className="text-muted card-header-slot">Program</th>
+                                <th className="text-muted card-header-slot">Transaction Count</th>
+                                <th className="text-muted card-header-slot">% of Total</th>
+                                <th className="text-muted card-header-slot">Instruction Count</th>
+                                <th className="text-muted card-header-slot">% of Total</th>
+                                {showSuccessRate && <th className="text-muted card-header-slot">Success Rate</th>}
                             </tr>
                         </thead>
                         <tbody>
@@ -94,7 +94,7 @@ export function BlockProgramsCard({ block }: { block: VersionedBlockResponse }) 
                                 const ixFreq = ixFrequency.get(programId) as number;
                                 const successes = txSuccesses.get(programId) || 0;
                                 return (
-                                    <tr key={programId}>
+                                    <tr key={programId} className="card-header-title">
                                         <td>
                                             <Address pubkey={new PublicKey(programId)} link />
                                         </td>

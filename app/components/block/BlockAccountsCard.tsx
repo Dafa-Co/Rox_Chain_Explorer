@@ -67,11 +67,11 @@ export function BlockAccountsCard({ block, blockSlot }: { block: VersionedBlockR
                 <table className="table table-sm table-nowrap card-table">
                     <thead>
                         <tr>
-                            <th className="text-muted">Account</th>
-                            <th className="text-muted">Read-Write Count</th>
-                            <th className="text-muted">Read-Only Count</th>
-                            <th className="text-muted">Total Count</th>
-                            <th className="text-muted">% of Transactions</th>
+                            <th className="text-muted card-header-slot">Account</th>
+                            <th className="text-muted card-header-slot">Read-Write Count</th>
+                            <th className="text-muted card-header-slot">Read-Only Count</th>
+                            <th className="text-muted card-header-slot">Total Count</th>
+                            <th className="text-muted card-header-slot">% of Transactions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -121,7 +121,7 @@ function StatsRow({
         pathname: `/block/${blockSlot}`,
     });
     return (
-        <tr>
+        <tr className="card-header-title">
             <td>
                 <Link href={accountPath}>
                     <Address pubkey={new PublicKey(address)} />

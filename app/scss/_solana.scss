@@ -55,9 +55,9 @@ ul.log-messages {
             top: 1.5rem;
         }
 
-        .popover-body {
-            color: white;
-        }
+        // .popover-body {
+        //     color: white;
+        // }
 
         .arrow.right {
             right: 1rem;
@@ -607,6 +607,18 @@ pre {
     flex: 1;
 }
 
+.rox-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.navbar-menu-icon, .outer-navbar-menu-icon {
+    cursor: pointer;
+    display: none;
+}
+
 .navbar-right-section {
     display: flex;
     align-items: center !important;
@@ -620,8 +632,7 @@ pre {
     align-items: center;
     flex-direction: row;
     gap: 0.5rem;
-    height: 40px;
-    padding: 0.75rem 1.25rem;
+    padding: 0.5rem 1rem;
     border-radius: 99px;
     background: rgba(255, 255, 255, 0.10);
     backdrop-filter: blur(8px);
@@ -636,11 +647,18 @@ pre {
     white-space: nowrap;
 }
 
+.rox-price-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .price-value {
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
     line-height: 20px; /* 142.857% */
+    margin-bottom: 0 !important;
 }
 
 .price-change {
@@ -648,22 +666,31 @@ pre {
     font-style: normal;
     font-weight: 600;
     line-height: 16px; /* 133.333% */
-    color: #169452
+    color: #169452;
+    margin-bottom: 0 !important;
+}
+
+.txn-fee-container {
+    display: flex;
+    align-items: center;
+}
+
+.txn-fee-separator {
+    margin-inline: 0.5rem;
 }
 
 .txn-fee {
     font-weight: 300;
     font-style: Light;
     font-size: 14px;
-    line-height: 20px;
     letter-spacing: 0%;   
+    margin-bottom: 0 !important;
 }
 
 .txn-fee-value {
     font-weight: 500;
     font-style: Medium;
     font-size: 14px;
-    line-height: 20px;
     letter-spacing: 0%;
 }
 
@@ -677,6 +704,11 @@ pre {
 
 .navbar-link-text:hover {
     opacity: 0.8;
+}
+
+.navbar-search-container {
+    padding-inline: 1.5rem;
+    width: 75%;
 }
 
 .navbar-subtitle {
@@ -696,6 +728,19 @@ pre {
     height: 100%;
 }
 
+.sidebar-links-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar-links-container p {
+    font-size: 1rem !important;
+    font-weight: 800 !important;
+}
 // Responsive design for navbar
 @media (max-width: 1200px) {
     .navbar-container {
@@ -712,12 +757,15 @@ pre {
     }
 }
 
+hr {
+    color: #362d65 !important
+}
 @media (max-width: 992px) {
-    .navbar-main-row {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-    }
+    // .navbar-main-row {
+    //     flex-direction: column;
+    //     gap: 1rem;
+    //     align-items: flex-start;
+    // }
     
     .navbar-left-section {
         width: 100%;
@@ -725,12 +773,16 @@ pre {
     }
     
     .navbar-right-section {
-        width: 100%;
-        justify-content: flex-end;
+        display: none;
+        // width: 100%;
+        // justify-content: flex-end;
+    }
+
+    .outer-navbar-menu-icon {
+        display: block;
     }
     
     .navbar-price-badge {
-        height: 36px;
         padding: 0.5rem 1rem;
     }
     
@@ -747,13 +799,25 @@ pre {
     .navbar-container {
         padding-left: 1.5rem !important;
         padding-right: 1.5rem !important;
-        gap: 1rem;
+        // gap: 1rem;
     }
     
     .navbar-left-section {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
+        // align-items: flex-start;
+        // gap: 0.75rem;
+    }
+
+    .rox-logo-container {
+        width: 100%;
+    }
+
+    .navbar-menu-icon {
+        display: block;
+    }
+
+    .outer-navbar-menu-icon {
+        display: none;
     }
     
     .navbar-right-section {
@@ -763,8 +827,16 @@ pre {
     }
     
     .navbar-price-badge {
-        height: 32px;
+        flex-direction: column;
         padding: 0.5rem 0.75rem;
+    }
+
+    .txn-fee-separator {
+        display: none;
+    }
+
+    .navbar-search-container {
+        width: 100%;
     }
     
     .navbar-price-text {
@@ -834,4 +906,53 @@ pre {
 
 .tps-series-button:hover {
     opacity: 0.8;
+}
+
+// Home Page Banner Styles
+.navbar-wrapper {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-no-margin {
+    margin: 0;
+}
+
+.home-banner {
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+    background-image: url("../img/banner.png");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    padding-block: 22px;
+}
+
+.home-banner-text {
+    margin: 0;
+    color: #f6f4fe;
+    font-size: 36px;
+    font-weight: 950;
+}
+
+.banner-icon {
+    position: absolute;
+    right: 0;
+    top: -1rem;
+}
+
+@media (max-width: 768px) {
+    .home-banner-text {
+        font-size: 24px;
+    }
+
+    .banner-icon {
+        display: none;
+    }
 }
