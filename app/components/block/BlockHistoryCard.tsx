@@ -214,7 +214,7 @@ export function BlockHistoryCard({ block, epoch }: { block: VersionedBlockRespon
             )}
 
             {filteredTransactions.length === 0 ? (
-                <div className="card-body">
+                <div className="card-body card-header-title">
                     {accountFilter === null && programFilter === HIDE_VOTES
                         ? "This block doesn't contain any non-vote transactions"
                         : 'No transactions found with this filter'}

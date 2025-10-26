@@ -33,7 +33,7 @@ export default function EpochDetailsPageClient({ params: { epoch } }: Props) {
             <div className="header">
                 <div className="header-body">
                     <h6 className="header-pretitle">Details</h6>
-                    <h2 className="header-title">Epoch</h2>
+                    <h2 className="header-title card-header-title">Epoch</h2>
                 </div>
             </div>
             {output}
@@ -84,22 +84,22 @@ function EpochOverviewCard({ epoch }: OverviewProps) {
                 </div>
                 <TableCardBody>
                     <tr>
-                        <td className="w-100">Epoch</td>
-                        <td className="text-lg-end font-monospace">
+                        <td className="w-100 card-header-slot">Epoch</td>
+                        <td className="text-lg-end font-monospace card-header-title">
                             <Epoch epoch={epoch} />
                         </td>
                     </tr>
                     {epoch > 0 && (
                         <tr>
-                            <td className="w-100">Previous Epoch</td>
-                            <td className="text-lg-end font-monospace">
+                            <td className="w-100 card-header-slot">Previous Epoch</td>
+                            <td className="text-lg-end font-monospace card-header-title">
                                 <Epoch epoch={epoch - 1} link />
                             </td>
                         </tr>
                     )}
                     <tr>
-                        <td className="w-100">Next Epoch</td>
-                        <td className="text-lg-end font-monospace">
+                        <td className="w-100 card-header-slot">Next Epoch</td>
+                        <td className="text-lg-end font-monospace card-header-title">
                             {currentEpoch > epoch ? (
                                 <Epoch epoch={epoch + 1} link />
                             ) : (
@@ -108,36 +108,36 @@ function EpochOverviewCard({ epoch }: OverviewProps) {
                         </td>
                     </tr>
                     <tr>
-                        <td className="w-100">First Slot</td>
-                        <td className="text-lg-end font-monospace">
+                        <td className="w-100 card-header-slot">First Slot</td>
+                        <td className="text-lg-end font-monospace card-header-title">
                             <Slot slot={firstSlot} />
                         </td>
                     </tr>
                     <tr>
-                        <td className="w-100">Last Slot</td>
-                        <td className="text-lg-end font-monospace">
+                        <td className="w-100 card-header-slot">Last Slot</td>
+                        <td className="text-lg-end font-monospace card-header-title">
                             <Slot slot={lastSlot} />
                         </td>
                     </tr>
                     {epochState.data.firstTimestamp && (
                         <tr>
-                            <td className="w-100">First Block Timestamp</td>
+                            <td className="w-100 card-header-slot">First Block Timestamp</td>
                             <td className="text-lg-end">
-                                <span className="font-monospace">
+                                <span className="font-monospace card-header-title">
                                     {displayTimestampUtc(epochState.data.firstTimestamp * 1000, true)}
                                 </span>
                             </td>
                         </tr>
                     )}
                     <tr>
-                        <td className="w-100">First Block</td>
-                        <td className="text-lg-end font-monospace">
+                        <td className="w-100 card-header-slot">First Block</td>
+                        <td className="text-lg-end font-monospace card-header-title">
                             <Slot slot={epochState.data.firstBlock} link />
                         </td>
                     </tr>
                     <tr>
-                        <td className="w-100">Last Block</td>
-                        <td className="text-lg-end font-monospace">
+                        <td className="w-100 card-header-slot">Last Block</td>
+                        <td className="text-lg-end font-monospace card-header-title">
                             {epochState.data.lastBlock !== undefined ? (
                                 <Slot slot={epochState.data.lastBlock} link />
                             ) : (
@@ -147,9 +147,9 @@ function EpochOverviewCard({ epoch }: OverviewProps) {
                     </tr>
                     {epochState.data.lastTimestamp && (
                         <tr>
-                            <td className="w-100">Last Block Timestamp</td>
+                            <td className="w-100 card-header-slot">Last Block Timestamp</td>
                             <td className="text-lg-end">
-                                <span className="font-monospace">
+                                <span className="font-monospace card-header-title">
                                     {displayTimestampUtc(epochState.data.lastTimestamp * 1000, true)}
                                 </span>
                             </td>
