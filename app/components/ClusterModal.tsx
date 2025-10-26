@@ -108,10 +108,10 @@ function ClusterToggle() {
             activeSuffix = 'primary';
             break;
         case ClusterStatus.Connecting:
-            activeSuffix = 'warning';
+            activeSuffix = 'primary';
             break;
         case ClusterStatus.Failure:
-            activeSuffix = 'danger';
+            activeSuffix = 'primary';
             break;
         default:
             assertUnreachable(status);
