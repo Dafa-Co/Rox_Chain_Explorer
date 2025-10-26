@@ -26,8 +26,20 @@ export function ClusterModal() {
                         &times;
                     </span>
 
-                    <h2 className="text-center mb-4 mt-4">Choose a Cluster</h2>
+                    <div className="sidebar-links-container">
+                        <a href="https://roxcustody.io/" target="_blank" rel="noopener noreferrer">
+                            <p className="navbar-link-text text-white">Rox Custody</p>
+                        </a>
+
+                        <a href="https://documentation.roxcustody.io" target="_blank" rel="noopener noreferrer">
+                            <p className="navbar-link-text text-white">Documentation</p>
+                        </a>
+                    </div>
+
+                    <hr className="my-4" />
+
                     <ClusterToggle />
+
                     {/* <ClusterModalDeveloperSettings /> */}
                 </div>
             </div>
