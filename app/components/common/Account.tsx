@@ -29,7 +29,7 @@ export function AccountHeader({ title, refresh }: AccountHeaderProps) {
 export function AccountAddressRow({ account }: AccountProps) {
     return (
         <tr>
-            <td>Address</td>
+            <td className="card-header-slot">Address</td>
             <td className="text-lg-end">
                 <Address pubkey={account.pubkey} alignRight raw />
             </td>
@@ -41,7 +41,7 @@ export function AccountBalanceRow({ account }: AccountProps) {
     const { lamports } = account;
     return (
         <tr>
-            <td>Balance (ROX)</td>
+            <td className="card-header-slot">Balance (ROX)</td>
             <td className="text-lg-end text-uppercase">
                 <SolBalance lamports={lamports} />
             </td>

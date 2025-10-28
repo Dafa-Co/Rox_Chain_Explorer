@@ -19,7 +19,7 @@ export function VoteAccountSection({ account, voteAccount }: { account: Account;
                 <AccountBalanceRow account={account} />
 
                 <tr>
-                    <td>
+                    <td className="card-header-slot">
                         Authorized Voter
                         {voteAccount.info.authorizedVoters.length > 1 ? 's' : ''}
                     </td>
@@ -39,26 +39,26 @@ export function VoteAccountSection({ account, voteAccount }: { account: Account;
                 </tr>
 
                 <tr>
-                    <td>Authorized Withdrawer</td>
+                    <td className="card-header-slot">Authorized Withdrawer</td>
                     <td className="text-lg-end">
                         <Address pubkey={voteAccount.info.authorizedWithdrawer} alignRight raw link />
                     </td>
                 </tr>
 
                 <tr>
-                    <td>Last Timestamp</td>
+                    <td className="card-header-slot">Last Timestamp</td>
                     <td className="text-lg-end font-monospace">
                         {displayTimestamp(voteAccount.info.lastTimestamp.timestamp * 1000)}
                     </td>
                 </tr>
 
                 <tr>
-                    <td>Commission</td>
+                    <td className="card-header-slot">Commission</td>
                     <td className="text-lg-end">{voteAccount.info.commission + '%'}</td>
                 </tr>
 
                 <tr>
-                    <td>Root Slot</td>
+                    <td className="card-header-slot">Root Slot</td>
                     <td className="text-lg-end">{rootSlot !== null ? <Slot slot={rootSlot} link /> : 'N/A'}</td>
                 </tr>
             </TableCardBody>
