@@ -72,10 +72,10 @@ export function TokenBalancesCardInner({ rows }: TokenBalancesCardInnerProps) {
                 <table className="table table-sm table-nowrap card-table">
                     <thead>
                         <tr>
-                            <th className="text-muted">Address</th>
-                            <th className="text-muted">Token</th>
-                            <th className="text-muted">Change</th>
-                            <th className="text-muted">Post Balance</th>
+                            <th className="text-muted card-header-white">Address</th>
+                            <th className="text-muted card-header-white">Token</th>
+                            <th className="text-muted card-header-white">Change</th>
+                            <th className="text-muted card-header-white">Post Balance</th>
                         </tr>
                     </thead>
                     <tbody className="list">

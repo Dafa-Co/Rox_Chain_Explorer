@@ -22,11 +22,11 @@ export function BlockRewardsCard({ block }: { block: VersionedBlockResponse }) {
                 <table className="table table-sm table-nowrap card-table">
                     <thead>
                         <tr>
-                            <th className="text-muted card-header-slot">Address</th>
-                            <th className="text-muted card-header-slot">Type</th>
-                            <th className="text-muted card-header-slot">Amount</th>
-                            <th className="text-muted card-header-slot">New Balance</th>
-                            <th className="text-muted card-header-slot">Percent Change</th>
+                            <th className="text-muted card-header-white">Address</th>
+                            <th className="text-muted card-header-white">Type</th>
+                            <th className="text-muted card-header-white">Amount</th>
+                            <th className="text-muted card-header-white">New Balance</th>
+                            <th className="text-muted card-header-white">Percent Change</th>
                         </tr>
                     </thead>
                     <tbody>

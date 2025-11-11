@@ -21,7 +21,9 @@ pre {
     border-top: 0px solid currentColor;
 }
 
-.table{ color: #0d0d0e!important;}
+.table {
+    color: #0d0d0e !important;
+}
 
 ul.log-messages {
     padding: 0.66rem;
@@ -193,9 +195,9 @@ h4.slot-pill {
     line-height: 1.5rem;
 }
 
-.search-icon{
-    color: #A09EC4 !important;
-    stroke: #A09EC4 !important;
+.search-icon {
+    color: #a09ec4 !important;
+    stroke: #a09ec4 !important;
 }
 .search-bar__control {
     border-radius: $border-radius !important;
@@ -385,7 +387,6 @@ div.inner-cards {
     .table td {
         border-top: 1px solid $gray-800-dark;
     }
-
 }
 
 .card-header {
@@ -616,7 +617,8 @@ pre {
     gap: 0.5rem;
 }
 
-.navbar-menu-icon, .outer-navbar-menu-icon {
+.navbar-menu-icon,
+.outer-navbar-menu-icon {
     cursor: pointer;
     display: none;
 }
@@ -636,7 +638,7 @@ pre {
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 99px;
-    background: rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -685,7 +687,7 @@ pre {
     font-weight: 300;
     font-style: Light;
     font-size: 14px;
-    letter-spacing: 0%;   
+    letter-spacing: 0%;
     margin-bottom: 0 !important;
 }
 
@@ -749,18 +751,18 @@ pre {
         padding-left: 2rem !important;
         padding-right: 2rem !important;
     }
-    
+
     .navbar-price-text {
         font-size: 14px;
     }
-    
+
     .navbar-link-text {
         font-size: 14px;
     }
 }
 
 hr {
-    color: #362d65 !important
+    color: #362d65 !important;
 }
 @media (max-width: 992px) {
     // .navbar-main-row {
@@ -768,12 +770,12 @@ hr {
     //     gap: 1rem;
     //     align-items: flex-start;
     // }
-    
+
     .navbar-left-section {
         width: 100%;
         justify-content: space-between;
     }
-    
+
     .navbar-right-section {
         display: none;
         // width: 100%;
@@ -783,15 +785,15 @@ hr {
     .outer-navbar-menu-icon {
         display: block;
     }
-    
+
     .navbar-price-badge {
         padding: 0.5rem 1rem;
     }
-    
+
     .navbar-price-text {
         font-size: 13px;
     }
-    
+
     .navbar-link-text {
         font-size: 13px;
     }
@@ -803,7 +805,7 @@ hr {
         padding-right: 1.5rem !important;
         // gap: 1rem;
     }
-    
+
     .navbar-left-section {
         flex-direction: column;
         // align-items: flex-start;
@@ -821,13 +823,13 @@ hr {
     .outer-navbar-menu-icon {
         display: none;
     }
-    
+
     .navbar-right-section {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.75rem;
     }
-    
+
     .navbar-price-badge {
         flex-direction: column;
         padding: 0.9rem 1.75rem;
@@ -840,15 +842,15 @@ hr {
     .navbar-search-container {
         width: 100%;
     }
-    
+
     .navbar-price-text {
         font-size: 12px;
     }
-    
+
     .navbar-link-text {
         font-size: 12px;
     }
-    
+
     .navbar-subtitle {
         font-size: 16px;
     }
@@ -859,15 +861,15 @@ hr {
         padding-left: 1rem !important;
         padding-right: 1rem !important;
     }
-    
+
     .navbar-price-text {
         font-size: 11px;
     }
-    
+
     .navbar-link-text {
         font-size: 11px;
     }
-    
+
     .navbar-subtitle {
         font-size: 14px;
     }
@@ -924,7 +926,7 @@ hr {
     position: relative;
     overflow: hidden;
     align-items: center;
-    background-image: url("../img/banner.png");
+    background-image: url('../img/banner.png');
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -957,4 +959,13 @@ hr {
     .banner-icon {
         display: none;
     }
+}
+
+.btn-dark {
+    border-color: #0d0d0e;
+}
+
+.bg-warning-soft {
+    color: white !important;
+    background-color: #db1521 !important;
 }

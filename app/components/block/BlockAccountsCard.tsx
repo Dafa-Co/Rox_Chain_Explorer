@@ -67,11 +67,11 @@ export function BlockAccountsCard({ block, blockSlot }: { block: VersionedBlockR
                 <table className="table table-sm table-nowrap card-table">
                     <thead>
                         <tr>
-                            <th className="text-muted card-header-slot">Account</th>
-                            <th className="text-muted card-header-slot">Read-Write Count</th>
-                            <th className="text-muted card-header-slot">Read-Only Count</th>
-                            <th className="text-muted card-header-slot">Total Count</th>
-                            <th className="text-muted card-header-slot">% of Transactions</th>
+                            <th className="text-muted card-header-white">Account</th>
+                            <th className="text-muted card-header-white">Read-Write Count</th>
+                            <th className="text-muted card-header-white">Read-Only Count</th>
+                            <th className="text-muted card-header-white">Total Count</th>
+                            <th className="text-muted card-header-white">% of Transactions</th>
                         </tr>
                     </thead>
                     <tbody>
