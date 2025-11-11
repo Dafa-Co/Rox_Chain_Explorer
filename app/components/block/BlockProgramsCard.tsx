@@ -81,12 +81,12 @@ export function BlockProgramsCard({ block }: { block: VersionedBlockResponse }) 
                     <table className="table table-sm table-nowrap card-table">
                         <thead>
                             <tr>
-                                <th className="text-muted card-header-slot">Program</th>
-                                <th className="text-muted card-header-slot">Transaction Count</th>
-                                <th className="text-muted card-header-slot">% of Total</th>
-                                <th className="text-muted card-header-slot">Instruction Count</th>
-                                <th className="text-muted card-header-slot">% of Total</th>
-                                {showSuccessRate && <th className="text-muted card-header-slot">Success Rate</th>}
+                                <th className="text-muted card-header-white">Program</th>
+                                <th className="text-muted card-header-white">Transaction Count</th>
+                                <th className="text-muted card-header-white">% of Total</th>
+                                <th className="text-muted card-header-white">Instruction Count</th>
+                                <th className="text-muted card-header-white">% of Total</th>
+                                {showSuccessRate && <th className="text-muted card-header-white">Success Rate</th>}
                             </tr>
                         </thead>
                         <tbody>

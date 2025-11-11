@@ -81,6 +81,12 @@
     font-family: var(--font-lexend);
 }
 
+.card-header-white {
+    color: white !important;
+    font-weight: 400 !important;
+    font-family: var(--font-lexend);
+}
+
 .card-header-tabs {
     margin-top: math.div(-$card-spacer-y, 2);
     margin-bottom: math.div(-$card-spacer-y, 2);

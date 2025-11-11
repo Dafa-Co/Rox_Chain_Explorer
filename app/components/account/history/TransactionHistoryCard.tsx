@@ -85,15 +85,15 @@ export function TransactionHistoryCard({ address }: { address: string }) {
                 <table className="table table-sm table-nowrap card-table">
                     <thead>
                         <tr>
-                            <th className="text-muted w-1 card-header-slot">Transaction Signature</th>
-                            <th className="text-muted w-1 card-header-slot">Block</th>
+                            <th className="text-muted w-1 card-header-white">Transaction Signature</th>
+                            <th className="text-muted w-1 card-header-white">Block</th>
                             {hasTimestamps && (
                                 <>
-                                    <th className="text-muted w-1 card-header-slot">Age</th>
-                                    <th className="text-muted w-1 card-header-slot">Timestamp</th>
+                                    <th className="text-muted w-1 card-header-white">Age</th>
+                                    <th className="text-muted w-1 card-header-white">Timestamp</th>
                                 </>
                             )}
-                            <th className="text-muted card-header-slot">Result</th>
+                            <th className="text-muted card-header-white">Result</th>
                         </tr>
                     </thead>
                     <tbody className="list">{detailsList}</tbody>
