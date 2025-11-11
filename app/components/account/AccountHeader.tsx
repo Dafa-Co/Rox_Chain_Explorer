@@ -92,7 +92,7 @@ function TokenMintHeader({
             <TokenMintHeaderCard
                 token={tokenInfo ? tokenInfo : { logoURI: undefined, name: undefined }}
                 address={address}
-                unverified={tokenInfo ? !tokenInfo.verified : false}
+                unverified={false}
             />
         ),
         [address, tokenInfo]
@@ -122,7 +122,7 @@ function TokenMintHeader({
             name: parsedData?.nftData?.json?.name ?? parsedData?.nftData.metadata.data.name,
             symbol: parsedData?.nftData?.metadata.data.symbol,
         };
-        return <TokenMintHeaderCard token={token} address={address} unverified={!tokenInfo?.verified} />;
+        return <TokenMintHeaderCard token={token} address={address} unverified={false} />;
     } else if (tokenInfo) {
         return defaultCard;
     }
@@ -160,10 +160,10 @@ function Token22MintHeader({
 }
 
 function TokenMintHeaderCard({
-    address,
-    token,
-    unverified,
-}: {
+                                 address,
+                                 token,
+                                 unverified,
+                             }: {
     address: string;
     token: { name?: string | undefined; logoURI?: string | undefined; symbol?: string | undefined };
     unverified: boolean;
@@ -195,10 +195,10 @@ function TokenMintHeaderCard({
                     .
                 </div>
             )}
+
             <div className="col-auto">
                 <div className="avatar avatar-lg header-avatar-top">
                     {token?.logoURI ? (
-                        // eslint-disable-next-line @next/next/no-img-element
                         <img
                             alt="token logo"
                             className="avatar-img rounded-circle border border-4 border-body"
@@ -210,7 +210,7 @@ function TokenMintHeaderCard({
                         <Identicon
                             address={address}
                             className="avatar-img rounded-circle border border-body identicon-wrapper"
-                            style={{ width: IDENTICON_WIDTH }}
+                            style={{ width: 64 }}
                         />
                     )}
                 </div>
@@ -218,11 +218,37 @@ function TokenMintHeaderCard({
 
             <div className="col ms-n3 ms-md-n2">
                 <h6 className="header-pretitle">Token</h6>
-                <h2 className="header-title">{token?.name || 'Unknown Token'}</h2>
-                <div className="header-pretitle no-overflow-with-ellipsis">
+
+                <h2 className="card-header-title ms-1 d-flex align-items-center gap-2 no-overflow-with-ellipsis">
+                    {token?.name || 'Unknown Token'}
+
+                    {/* ✅ Circular Verified Badge */}
+                    {!unverified && (
+                        <span title="Verified Token" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                            <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <circle cx="12" cy="12" r="10" fill="#4CAF50" />
+                                <path
+                                    d="M16 9.5L10.75 14.75L8 12"
+                                    stroke="white"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </svg>
+                        </span>
+                    )}
+                </h2>
+
+                <div className="header-pretitle ms-1 mt-1 no-overflow-with-ellipsis">
                     {token?.symbol ? token.symbol : 'No Symbol was found'}
                 </div>
             </div>
         </div>
     );
 }
+
