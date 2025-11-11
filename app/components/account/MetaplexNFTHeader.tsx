@@ -2,7 +2,7 @@ import { InfoTooltip } from '@components/common/InfoTooltip';
 import { ArtContent } from '@components/common/NFTArt';
 import { programs } from '@metaplex/js';
 import { NFTData, useFetchAccountInfo, useMintAccountInfo } from '@providers/accounts';
-import { EditionInfo } from '@providers/accounts/utils/getEditionInfo';
+// import { EditionInfo } from '@providers/accounts/utils/getEditionInfo';
 import { PublicKey } from '@solana/web3.js';
 import { useClusterPath } from '@utils/url';
 import Link from 'next/link';
@@ -50,18 +50,18 @@ export function MetaplexNFTHeader({ nftData, address }: { nftData: NFTData; addr
                 <ArtContent pubkey={address} data={data} />
             </div>
             <div className="col mb-3 ms-0.5 mt-3">
-                {<h6 className="header-pretitle ms-1">Metaplex NFT</h6>}
+                {<h6 className="header-pretitle ms-1">NFT</h6>}
                 <div className="d-flex align-items-center">
                     <h2 className="card-header-title ms-1 align-items-center no-overflow-with-ellipsis">
                         {metadata.data.name !== '' ? metadata.data.name : 'No NFT name was found'}
                     </h2>
-                    {getEditionPill(nftData.editionInfo)}
+                    {/*{getEditionPill(nftData.editionInfo)}*/}
                     {isVerifiedCollection ? getVerifiedCollectionPill() : null}
                 </div>
-                <h4 className="header-pretitle ms-1 mt-1 no-overflow-with-ellipsis">
+                <h6 className="header-pretitle ms-1 mt-1 no-overflow-with-ellipsis">
                     {metadata.data.symbol !== '' ? metadata.data.symbol : 'No Symbol was found'}
-                </h4>
-                <div className="mb-2 mt-2">{getSaleTypePill(metadata.primarySaleHappened)}</div>
+                </h6>
+                {/*<div className="mb-2 mt-2">{getSaleTypePill(metadata.primarySaleHappened)}</div>*/}
                 <div className="mb-3 mt-2">{getIsMutablePill(metadata.isMutable)}</div>
                 <div className="btn-group">
                     <button
@@ -137,38 +137,38 @@ export function getCreatorDropdownItems(creators: Creator[] | null) {
     );
 }
 
-function getEditionPill(editionInfo: EditionInfo) {
-    const masterEdition = editionInfo.masterEdition;
-    const edition = editionInfo.edition;
-
-    return (
-        <div className={'d-inline-flex ms-2'}>
-            <span className="badge badge-pill bg-dark">{`${
-                edition && masterEdition
-                    ? `Edition ${edition.edition.toNumber()} / ${masterEdition.supply.toNumber()}`
-                    : masterEdition
-                    ? 'Master Edition'
-                    : 'No Master Edition Information'
-            }`}</span>
-        </div>
-    );
-}
-
-function getSaleTypePill(hasPrimarySaleHappened: boolean) {
-    const primaryMarketTooltip = 'Creator(s) split 100% of the proceeds when this NFT is sold.';
-
-    const secondaryMarketTooltip =
-        'Creator(s) split the Seller Fee when this NFT is sold. The owner receives the remaining proceeds.';
-
-    return (
-        <div className={'d-inline-flex align-items-center'}>
-            <span className="badge badge-pill bg-dark">{`${
-                hasPrimarySaleHappened ? 'Secondary Market' : 'Primary Market'
-            }`}</span>
-            <InfoTooltip bottom text={hasPrimarySaleHappened ? secondaryMarketTooltip : primaryMarketTooltip} />
-        </div>
-    );
-}
+// function getEditionPill(editionInfo: EditionInfo) {
+//     const masterEdition = editionInfo.masterEdition;
+//     const edition = editionInfo.edition;
+//
+//     return (
+//         <div className={'d-inline-flex ms-2'}>
+//             <span className="badge badge-pill bg-dark">{`${
+//                 edition && masterEdition
+//                     ? `Edition ${edition.edition.toNumber()} / ${masterEdition.supply.toNumber()}`
+//                     : masterEdition
+//                     ? 'Master Edition'
+//                     : 'No Master Edition Information'
+//             }`}</span>
+//         </div>
+//     );
+// }
+//
+// function getSaleTypePill(hasPrimarySaleHappened: boolean) {
+//     const primaryMarketTooltip = 'Creator(s) split 100% of the proceeds when this NFT is sold.';
+//
+//     const secondaryMarketTooltip =
+//         'Creator(s) split the Seller Fee when this NFT is sold. The owner receives the remaining proceeds.';
+//
+//     return (
+//         <div className={'d-inline-flex align-items-center'}>
+//             <span className="badge badge-pill bg-dark">{`${
+//                 hasPrimarySaleHappened ? 'Secondary Market' : 'Primary Market'
+//             }`}</span>
+//             <InfoTooltip bottom text={hasPrimarySaleHappened ? secondaryMarketTooltip : primaryMarketTooltip} />
+//         </div>
+//     );
+// }
 
 export function getIsMutablePill(isMutable: boolean) {
     return <span className="badge badge-pill bg-dark">{`${isMutable ? 'Mutable' : 'Immutable'}`}</span>;
