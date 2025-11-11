@@ -52,7 +52,7 @@ export function MetaplexNFTHeader({ nftData, address }: { nftData: NFTData; addr
             <div className="col mb-3 ms-0.5 mt-3">
                 {<h6 className="header-pretitle ms-1">Metaplex NFT</h6>}
                 <div className="d-flex align-items-center">
-                    <h2 className="header-title ms-1 align-items-center no-overflow-with-ellipsis">
+                    <h2 className="card-header-title ms-1 align-items-center no-overflow-with-ellipsis">
                         {metadata.data.name !== '' ? metadata.data.name : 'No NFT name was found'}
                     </h2>
                     {getEditionPill(nftData.editionInfo)}

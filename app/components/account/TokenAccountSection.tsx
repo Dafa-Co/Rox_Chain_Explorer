@@ -187,7 +187,7 @@ function FungibleTokenMintAccountCard({
                         </td>
                     </tr>
                 )}
-                {mintInfo.mintAuthority && (
+                {/* {mintInfo.mintAuthority && (
                     <tr>
                         <td>Mint Authority</td>
                         <td className="text-lg-end">
@@ -202,7 +202,7 @@ function FungibleTokenMintAccountCard({
                             <Address pubkey={mintInfo.freezeAuthority} alignRight link />
                         </td>
                     </tr>
-                )}
+                )} */}
                 <tr>
                     <td>Decimals</td>
                     <td className="text-lg-end">{mintInfo.decimals}</td>
@@ -248,8 +248,8 @@ function FungibleTokenMintAccountCard({
 function NonFungibleTokenMintAccountCard({
     account,
     nftData,
-    mintInfo,
-}: {
+}: // mintInfo,
+{
     account: Account;
     nftData: NFTData;
     mintInfo: MintAccountInfo;
@@ -302,7 +302,7 @@ function NonFungibleTokenMintAccountCard({
                         </td>
                     </tr>
                 )}
-                {mintInfo.mintAuthority && (
+                {/* {mintInfo.mintAuthority && (
                     <tr>
                         <td>Mint Authority</td>
                         <td className="text-lg-end">
@@ -317,7 +317,7 @@ function NonFungibleTokenMintAccountCard({
                             <Address pubkey={mintInfo.freezeAuthority} alignRight link />
                         </td>
                     </tr>
-                )}
+                )} */}
                 <tr>
                     <td>Update Authority</td>
                     <td className="text-lg-end">

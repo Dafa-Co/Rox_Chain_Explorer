@@ -426,7 +426,7 @@ function AccountsCard({ signature }: SignatureProps) {
                 <td>
                     <BalanceDelta delta={delta} isSol />
                 </td>
-                <td className='text-lg-center card-header-title'>
+                <td className="text-lg-center card-header-title">
                     <SolBalance lamports={post} />
                 </td>
                 <td>
@@ -453,11 +453,11 @@ function AccountsCard({ signature }: SignatureProps) {
                 <table className="table table-sm table-nowrap card-table">
                     <thead>
                         <tr>
-                            <th className="text-muted card-header-slot">#</th>
-                            <th className="text-muted card-header-slot">Address</th>
-                            <th className="text-muted card-header-slot">Change (ROX)</th>
-                            <th className="text-muted card-header-slot">Post Balance (ROX)</th>
-                            <th className="text-muted card-header-slot">Details</th>
+                            <th className="text-muted card-header-white">#</th>
+                            <th className="text-muted card-header-white">Address</th>
+                            <th className="text-muted card-header-white">Change (ROX)</th>
+                            <th className="text-muted card-header-white">Post Balance (ROX)</th>
+                            <th className="text-muted card-header-white">Details</th>
                         </tr>
                     </thead>
                     <tbody className="list">{accountRows}</tbody>
