@@ -115,6 +115,15 @@
     border-top-width: 0;
 }
 
+.header .header-body{
+  background: #33266f !important;
+}
+
+.header .header-body h6,
+.header .header-body h2 {
+  color: #fff !important;
+}
+
 .card-table thead th,
 .card-table tbody td {
     &:first-child {

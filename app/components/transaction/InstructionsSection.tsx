@@ -103,10 +103,10 @@ export function InstructionsSection({ signature }: SignatureProps) {
 
     return (
         <>
-            <div className="container">
+            <div>
             <div className="header">
                 <div className="header-body">
-                    <h2 className="mb-0 card-header-title fw-bold" style={{ fontSize: '1.5rem' }}>
+                    <h2 className="mb-0 card-header-title fw-bold px-4" style={{ fontSize: '1.5rem' }}>
                         {transaction.message.instructions.length > 1 ? 'Instructions' : 'Instruction'}
                     </h2>
                 </div>
