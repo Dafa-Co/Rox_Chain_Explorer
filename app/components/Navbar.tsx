@@ -1,6 +1,7 @@
 'use client';
 
 import Logo from '@img/logos-solana/light-explorer-logo.svg';
+import RoxCustodyLogo from '@img/logos-solana/light-roxcustody-logo.svg';
 import roxLogo from '@img/logos-solana/rox-chain.svg';
 import roxIcon from '@img/rox-icon.png';
 import { useDisclosure } from '@mantine/hooks';
@@ -88,7 +89,7 @@ export function Navbar({ children }: INavbarProps) {
 
             {isHomePage && (
                 <div className="home-banner">
-                    <Image alt="Rox Explorer" height={42} src={Logo} width={164} />
+                    <Image alt="Rox Explorer" height={42} src={RoxCustodyLogo} width={164} />
                     <p className="font-skyline text-center mb-0 home-banner-text">
                         The Institutional-Grade Digital-Asset Platform
                     </p>
