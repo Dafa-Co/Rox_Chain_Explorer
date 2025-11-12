@@ -20,5 +20,5 @@ jobs:
           cd ~/demo/Rox_Chain_Explorer
           git pull
           docker rm -f rox-chain-explorer
-          docker build -t rox-chain-explorer
+          docker build -t rox-chain-explorer .
           docker run -d -p 2004:3000 --name=rox-chain-explorer --restart=unless-stopped rox-chain-explorer
