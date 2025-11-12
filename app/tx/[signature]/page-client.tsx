@@ -3,6 +3,7 @@
 import { Address } from '@components/common/Address';
 import { BalanceDelta } from '@components/common/BalanceDelta';
 import { ErrorCard } from '@components/common/ErrorCard';
+import { Identicon } from '@components/common/Identicon';
 import { InfoTooltip } from '@components/common/InfoTooltip';
 import { LoadingCard } from '@components/common/LoadingCard';
 import { Signature } from '@components/common/Signature';
@@ -12,7 +13,7 @@ import { TableCardBody } from '@components/common/TableCardBody';
 import { SignatureContext } from '@components/instruction/SignatureContext';
 import { InstructionsSection } from '@components/transaction/InstructionsSection';
 // import { ProgramLogSection } from '@components/transaction/ProgramLogSection';
-import { TokenBalancesCard } from '@components/transaction/TokenBalancesCard';
+import { TokenBalancesCard, generateTokenBalanceRows } from '@components/transaction/TokenBalancesCard';
 import { FetchStatus } from '@providers/cache';
 import { useCluster } from '@providers/cluster';
 import {
@@ -23,7 +24,7 @@ import {
 } from '@providers/transactions';
 import { useFetchTransactionDetails } from '@providers/transactions/parsed';
 // import { ParsedTransaction, SystemInstruction, SystemProgram, TransactionSignature } from '@solana/web3.js';
-import { ParsedTransaction, TransactionSignature } from '@solana/web3.js';
+import { ParsedTransaction, PublicKey, TransactionSignature } from '@solana/web3.js';
 import { Cluster, ClusterStatus } from '@utils/cluster';
 import { displayTimestamp } from '@utils/date';
 import { SignatureProps } from '@utils/index';
@@ -34,11 +35,19 @@ import useTabVisibility from '@utils/use-tab-visibility';
 import { BigNumber } from 'bignumber.js';
 import bs58 from 'bs58';
 import Link from 'next/link';
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useMemo, useState } from 'react';
 import { RefreshCw, Settings } from 'react-feather';
+import useSWR from 'swr';
+
+import { useScaledUiAmountForMint } from '@/app/providers/accounts/tokens';
+import { getTokenInfo, getTokenInfoSwrKey } from '@/app/utils/token-info';
 
 const AUTO_REFRESH_INTERVAL = 2000;
 const ZERO_CONFIRMATION_BAILOUT = 5;
+
+async function fetchTokenInfo([_, address, cluster, url]: ['get-token-info', string, Cluster, string]) {
+    return await getTokenInfo(new PublicKey(address), cluster, url);
+}
 
 enum AutoRefresh {
     Active,
@@ -166,6 +175,84 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
         }
     }, [autoRefresh, fetchStatus, signature]);
 
+    const transactionWithMeta = details?.data?.transactionWithMeta;
+    const fee = transactionWithMeta?.meta?.fee;
+    const costUnits = transactionWithMeta?.meta?.costUnits;
+    const transaction = transactionWithMeta?.transaction;
+    const tokenTransferData = useMemo(() => {
+        if (!transactionWithMeta || !transaction?.message?.accountKeys) {
+            return undefined;
+        }
+
+        const { meta } = transactionWithMeta;
+        if (!meta?.postTokenBalances || meta.postTokenBalances.length === 0) {
+            return undefined;
+        }
+
+        const rows = generateTokenBalanceRows(
+            meta.preTokenBalances ?? [],
+            meta.postTokenBalances,
+            transaction.message.accountKeys
+        );
+
+        const meaningfulRows = rows.filter(row => !row.delta.isZero());
+        if (meaningfulRows.length === 0) {
+            return undefined;
+        }
+
+        meaningfulRows.sort((a, b) => b.delta.abs().comparedTo(a.delta.abs()));
+        const selectedRow = meaningfulRows.find(row => row.delta.gt(0)) ?? meaningfulRows[0];
+        const matchingBalance = meta.postTokenBalances.find(
+            balance => balance.accountIndex === selectedRow.accountIndex && balance.mint === selectedRow.mint
+        );
+
+        const decimals = matchingBalance?.uiTokenAmount.decimals ?? 0;
+
+        return {
+            amountUiString: selectedRow.delta.abs().toString(),
+            decimals,
+            mint: selectedRow.mint,
+        };
+    }, [transactionWithMeta, transaction]);
+    const tokenInfoKey = useMemo(
+        () =>
+            tokenTransferData?.mint ? getTokenInfoSwrKey(tokenTransferData.mint, cluster, clusterUrl) : null,
+        [tokenTransferData?.mint, cluster, clusterUrl]
+    );
+    const { data: tokenTransferInfo } = useSWR(tokenInfoKey, fetchTokenInfo);
+    const [scaledTransferAmount] = useScaledUiAmountForMint(
+        tokenTransferData?.mint,
+        tokenTransferData?.amountUiString ?? '0'
+    );
+    const tokenSymbol =
+        tokenTransferInfo?.symbol ||
+        (tokenTransferData ? `${tokenTransferData.mint.slice(0, 4)}...${tokenTransferData.mint.slice(-4)}` : undefined);
+    const tokenLogoUri = tokenTransferInfo?.logoURI ?? undefined;
+    const formattedTransferAmount = useMemo(() => {
+        if (!tokenTransferData) {
+            return undefined;
+        }
+        const decimalsToDisplay = Math.min(tokenTransferData.decimals, 9);
+        const amount = new BigNumber(scaledTransferAmount);
+        if (!amount.isFinite()) {
+            return tokenTransferData.amountUiString;
+        }
+        return amount.toFormat(decimalsToDisplay);
+    }, [tokenTransferData, scaledTransferAmount]);
+    const blockhash = transaction?.message.recentBlockhash;
+    // const isNonce = (() => {
+    //     if (!transaction || transaction.message.instructions.length < 1) {
+    //         return false;
+    //     }
+
+    //     const ix = intoTransactionInstruction(transaction, transaction.message.instructions[0]);
+    //     return (
+    //         ix &&
+    //         SystemProgram.programId.equals(ix.programId) &&
+    //         SystemInstruction.decodeInstructionType(ix) === 'AdvanceNonceAccount'
+    //     );
+    // })();
+
     if (!status || (status.status === FetchStatus.Fetching && autoRefresh === AutoRefresh.Inactive)) {
         return <LoadingCard />;
     } else if (status.status === FetchStatus.FetchFailed) {
@@ -184,24 +271,6 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
     }
 
     const { info } = status.data;
-
-    const transactionWithMeta = details?.data?.transactionWithMeta;
-    const fee = transactionWithMeta?.meta?.fee;
-    const costUnits = transactionWithMeta?.meta?.costUnits;
-    const transaction = transactionWithMeta?.transaction;
-    const blockhash = transaction?.message.recentBlockhash;
-    // const isNonce = (() => {
-    //     if (!transaction || transaction.message.instructions.length < 1) {
-    //         return false;
-    //     }
-
-    //     const ix = intoTransactionInstruction(transaction, transaction.message.instructions[0]);
-    //     return (
-    //         ix &&
-    //         SystemProgram.programId.equals(ix.programId) &&
-    //         SystemInstruction.decodeInstructionType(ix) === 'AdvanceNonceAccount'
-    //     );
-    // })();
 
     let statusClass = 'success';
     let statusText = 'Success';
@@ -278,17 +347,48 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
                 )}
 
                 <tr>
-                    <td className="card-header-slot">Transfer Amount (ROX)</td>
+                    <td className="card-header-slot">
+                        {tokenTransferData ? (
+                            <span className="d-inline-flex align-items-center gap-2">
+                                <span>Transfer Amount</span>
+                                <span className="d-inline-flex align-items-center gap-2">
+                                    <span>({tokenSymbol ?? 'Tokens'})</span>
+                                </span>
+                            </span>
+                        ) : (
+                            'Transfer Amount (ROX)'
+                        )}
+                    </td>
                     <td className="text-lg-end card-header-title">
-                        <SolBalance
-                            lamports={
-                                (
-                                    details?.data?.transactionWithMeta?.transaction?.message?.instructions?.find(
-                                        ix => ix.programId.toString() === '11111111111111111111111111111111'
-                                    ) as any
-                                )?.parsed?.info?.lamports ?? 0
-                            }
-                        />
+                        {tokenTransferData ? (
+                            <span>
+                                {formattedTransferAmount ?? tokenTransferData.amountUiString}
+                                {tokenLogoUri ? (
+                                    <img
+                                        alt={`${tokenSymbol ?? 'Token'} logo`}
+                                        src={tokenLogoUri}
+                                        className="rounded-circle border border-body ms-2"
+                                        style={{ width: 24, height: 24, objectFit: 'cover' }}
+                                    />
+                                ) : (
+                                    <Identicon
+                                        address={tokenTransferData.mint}
+                                        className="rounded-circle border border-body identicon-wrapper"
+                                        style={{ width: 24, height: 24 }}
+                                    />
+                                )}
+                            </span>
+                        ) : (
+                            <SolBalance
+                                lamports={
+                                    (
+                                        details?.data?.transactionWithMeta?.transaction?.message?.instructions?.find(
+                                            ix => ix.programId.toString() === '11111111111111111111111111111111'
+                                        ) as any
+                                    )?.parsed?.info?.lamports ?? 0
+                                }
+                            />
+                        )}
                     </td>
                 </tr>
 
@@ -430,9 +530,9 @@ function AccountsCard({ signature }: SignatureProps) {
                     <SolBalance lamports={post} />
                 </td>
                 <td>
-                    {index === 0 && <span className="badge bg-info-soft me-1">Fee Payer</span>}
-                    {account.signer && <span className="badge bg-info-soft me-1">Signer</span>}
-                    {account.writable && <span className="badge bg-danger-soft me-1">Writable</span>}
+                    {index === 0 && <span className="badge e-bg-blue-950 me-1">Fee Payer</span>}
+                    {account.signer && <span className="badge e-bg-blue-950 me-1">Signer</span>}
+                    {account.writable && <span className="badge e-bg-blue-950 me-1">Writable</span>}
                     {message.instructions.find(ix => ix.programId.equals(pubkey)) && (
                         <span className="badge bg-warning-soft me-1">Program</span>
                     )}
