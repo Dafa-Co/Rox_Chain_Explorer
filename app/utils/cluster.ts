@@ -34,8 +34,8 @@ export function clusterName(cluster: Cluster): string {
     }
 }
 
-export const MAINNET_BETA_URL = 'https://roxchain.roxcustody.io';
-export const DEVNET_URL = 'https://roxchain-dev.roxcustody.io';
+export const MAINNET_BETA_URL = 'https://rpc.roxchain.io';
+export const DEVNET_URL = 'https://rpc-dev.roxchain.io';
 
 const modifyUrl = (url: string): string => {
     if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
