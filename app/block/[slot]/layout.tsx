@@ -205,8 +205,8 @@ function BlockLayoutInner({ children, params: { slot } }: Props) {
     return (
         <div className="container">
             <div className="header">
-                <div className="header-body">
-                    <h6 className="header-pretitle">Details</h6>
+                <div className="header-body px-4 e-flex e-flex-col e-gap-2">
+                    <h6 className="header-pretitle card-header-slot">Details</h6>
                     <h2 className="header-title card-header-title">Block</h2>
                 </div>
             </div>
@@ -259,8 +259,8 @@ function MoreSection({ children, slot }: { children: React.ReactNode; slot: numb
         <>
             <div className="container">
                 <div className="header">
-                    <div className="header-body pt-0">
-                        <ul className="nav nav-tabs nav-overflow header-tabs">
+                    <div className="header-body px-4 pt-0">
+                        <ul className="nav nav-tabs border border-0 nav-overflow header-tabs">
                             {TABS.map(({ title, slug, path }) => (
                                 <TabLink key={slug} slot={slot} path={path} title={title} />
                             ))}
@@ -282,7 +282,7 @@ function TabLink({ path, slot, title }: { path: string; slot: number; title: str
             <Link
                 className={`${isActive ? 'active ' : ''}nav-link`}
                 style={{
-                    color: (isActive && 'black') || undefined,
+                    color: (isActive && 'white') || undefined,
                 }}
                 href={tabPath}
                 scroll={false}
