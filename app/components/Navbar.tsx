@@ -65,11 +65,11 @@ export function Navbar({ children }: INavbarProps) {
                         </div>
 
                         <div className="navbar-right-section flex-shrink-0 ms-1">
-                            <a href="https://roxcustody.io/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://roxcustody.com" target="_blank" rel="noopener noreferrer">
                                 <p className="navbar-link-text text-white">Rox Custody</p>
                             </a>
 
-                            <a href="https://documentation.roxcustody.io" target="_blank" rel="noopener noreferrer">
+                            <a href="https://documentation.roxcustody.com" target="_blank" rel="noopener noreferrer">
                                 <p className="navbar-link-text text-white">Documentation</p>
                             </a>
 
