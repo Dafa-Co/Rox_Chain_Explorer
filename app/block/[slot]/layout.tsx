@@ -205,7 +205,7 @@ function BlockLayoutInner({ children, params: { slot } }: Props) {
     return (
         <div className="container">
             <div className="header">
-                <div className="header-body px-4 e-flex e-flex-col e-gap-2">
+                <div className="header-body  px-4 mt-5 e-flex e-flex-col e-gap-2">
                     <h6 className="header-pretitle card-header-slot">Details</h6>
                     <h2 className="header-title card-header-title">Block</h2>
                 </div>
